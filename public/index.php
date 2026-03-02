@@ -1,14 +1,12 @@
 <?php
 
 
-require_once 'config/config.php';
-require_once 'config/autoload.php';
-
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../config/autoload.php';
 
 // ROUTEUR
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = trim($uri, '/');
-
 switch ($uri) {
     case '':
         $homeController = new HomeController();

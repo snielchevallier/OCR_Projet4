@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/**
+ * Reset css.
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/**
+ * Déclaration des couleurs.
+ */
+:root {
+    /* Couleurs de fond */
+    --backgroundColor: #F5F3EF;
+    --bg-white: #FFFFFF;
+    --bg-light: #FAF9F7;
+    --bg-green: #00AC66;
+    --bg-blue: #EDF2F6;
+    /* Couleurs de texte */
+    --text-black: #000000;
+    --text-white: #FFFFFF;
+
+}
+
+
+body {
+    background-color: var(--backgroundColor);
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--bg-light);
+    width: 100%;
+    text-align: right;
+    font-size: 14px;
+    color: var(--text-black);
+}
+
+footer ul {
+    list-style: none;
+    display: inline-flex;
+    gap: 40px;
+}
+
+footer a {
+    color: var(--text-black);
+    text-decoration: none;
+}

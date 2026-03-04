@@ -6,7 +6,10 @@ final class HomeController
 {
     public function home(): void
     {
+        $bookManager = new BookManager();
+        $books = $bookManager->getNBooks(4);
+
         $view = new View("Accueil");
-        $view->render("home");
+        $view->render("home", ['books' => $books]);
     }
 }

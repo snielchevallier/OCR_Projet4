@@ -16,6 +16,10 @@ switch ($uri) {
 		$bookController = new BookController();
 		$bookController->listBooks();
 		break;
+	case 'detail-livre':
+		$bookController = new BookController();
+		$bookController->detailBook();
+		break;
 	default:
 		// Page d'accueil ou 404
 		echo 'Page non trouvée';

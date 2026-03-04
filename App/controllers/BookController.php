@@ -9,6 +9,15 @@ class BookController{
         $books = $bookManager->getAllBooks();
         
         $view = new View("Liste des livres");
-        $view->render("allBooks", ['books' => $books]);
+        $view->render("books", ['books' => $books]);
+    }
+
+    public function detailBook():void{
+        $bookManager = new BookManager();
+        $idBook=Utils::request('id', -1);
+        $book = $bookManager->getBookById(intval($idBook));
+
+        $view = new View("détail du livre");
+        $view->render("book-detail", ['book' => $book]);
     }
 }

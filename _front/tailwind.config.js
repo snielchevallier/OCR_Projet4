@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./index.html",
+    "./*.html",
     "./src/**/*.{html,js}"
   ],
   theme: {
@@ -13,6 +13,7 @@ module.exports = {
         'tomTroc-light': '#FAF9F7',
         'tomTroc-blue': '#EDF2F6',
         'tomTroc-grey': '#A6A6A6',
+        'tomTroc-lightgrey': '#F0F0F0',
         'tomTroc-darkgrey': '#292929',
       },
       fontFamily: {

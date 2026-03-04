@@ -19,33 +19,37 @@
     <body class="bg-tomTroc-bg">
         <!--HEADER-->
         <header>
-            <nav class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-                <img src="./assets/img/logo.svg" alt="Logo de Tom Troc" class="h-10">
+            <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center">
                 
-                <!-- Menu Desktop-->
-                <div id="menu-desktop" class="hidden md:block">
-                    <ul class="flex gap-6 inline-flex">
-                        <li><a href="#" class="font-bold hover:font-bold">Accueil</a></li>
-                        <li><a href="#" class="hover:font-bold">Nos livres</a></li>
-                        <li><a href="#" class="hover:font-bold">Messagerie</a></li>
-                        <li><a href="#" class="hover:font-bold">Mon compte</a></li>
-                    </ul>
-                </div>
-
-                <!-- Menu Mobile-->
-                <button id="menu-btn" class="md:hidden">
-                    <div class="w-8 h-0.5 bg-black mb-1"></div>
-                    <div class="w-8 h-0.5 bg-black mb-1"></div>
-                    <div class="w-8 h-0.5 bg-black mb-1"></div>
+                <img src="./assets/img/logo.svg" alt="Tom Troc" class="h-10">
+                <button id="menu-btn" class="md:hidden ml-auto">
+                    <img src="./assets/img/icon-menu.svg" alt="Menu" class="h-6">
                 </button>
-                <div id="menu-mobile" class="hidden">
-                    <ul>
-                        <li><a href="#" class="font-bold hover:font-bold">Accueil</a></li>
-                        <li><a href="#" class="hover:font-bold">Nos livres</a></li>
-                        <li><a href="#" class="hover:font-bold">Messagerie</a></li>
-                        <li><a href="#" class="hover:font-bold">Mon compte</a></li>
-                    </ul>
-                </div>
+                <!-- Menu -->
+                <ul id="menu"
+                    class="hidden absolute top-16 left-0 w-full bg-white 
+                        flex flex-col gap-4 p-6 text-sm font-inter
+                        md:static md:flex md:flex-row md:items-center 
+                        md:gap-8 md:p-0 md:bg-transparent 
+                        md:flex-1 md:ml-8">
+
+                    <li>
+                        <a href="#" class="block py-2 font-semibold hover:text-tomTroc-green">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Nos livres à l'échange</a>
+                    </li>
+                    <li class="md:ml-auto flex items-center gap-2">
+                        <img src="./assets/img/icon-message.svg" alt="" class="h-5"> <a href="#" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2">10</span></a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                    </li>
+                </ul>
+
             </nav>
         </header>
         <!--CONTENT-->
@@ -152,29 +156,37 @@
             </section>
             <!--BLOCK BANDEAU IMAGE-->
             <section>
-                <div class="flex items-center">
+                <div class="flex items-center md:block">
                     <img src="./assets/img/bandeau.png" aria-label="" alt="Logo de Tom Troc" class="mx-auto">
+                </div>
+                <div class="flex items-center md:hidden">
+                    <img src="./assets/img/bandeau-mob.png" aria-label="" alt="Logo de Tom Troc" class="mx-auto">
                 </div>
             </section>
             <!--BLOCK NOS VALEURS-->
             <section class="max-w-6xl mx-auto">
-                <div class="px-5 pt-8 pb-6 max-w-sm mx-auto">
-                    <h2 class="text-3xl font-playfairDisplay mb-6 text-left">
+                <div class="px-5 pt-8 pb-2 max-w-sm mx-auto">
+                    <h2 class="text-3xl font-playfairDisplay mb-2 text-left">
                         Nos valeurs
                     </h2>
-                    <p class="font-inter mb-6 text-left text-sm">
+                    <p class="font-inter mb-4 text-left text-sm md:text-base">
                         Chez Tom Troc, nous mettons l'accent sur le partage, la découverte et la communauté. Nos valeurs sont ancrées dans notre passion pour les livres et notre désir de créer des liens entre les lecteurs. Nous croyons en la puissance des histoires pour rassembler les gens et inspirer des conversations enrichissantes.<br>
                         <br>
                         Notre association a été fondée avec une conviction profonde : chaque livre mérite d'être lu et partagé.<br>
                         <br>
                         Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.
                     </p>
-                    <p class="font-inter mb-6 text-left text-xs italic text-tomTroc-grey">
+                    
+                </div>
+                <div class="px-5 pt-0 pb-6 max-w-sm mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 align-top">
+                    <div>
+                        <p class="font-inter text-left text-xs italic text-tomTroc-grey mr-auto md:mr-auto">
                         L’équipe Tom Troc
                     </p>
-                </div>
-                <div class="px-5 pt-0 pb-6 max-w-sm mx-auto md:ml-auto">
-                    <img src="./assets/img/coeur.svg" aria-label="" alt="Coeur" class="mx-auto md:ml-auto">
+                    </div>
+                    <div class="md:mr-0">
+                        <img src="./assets/img/coeur.svg" aria-label="" alt="Coeur" class="mx-auto md:mr-auto">
+                    </div>
                 </div>
             </section>
         </main>

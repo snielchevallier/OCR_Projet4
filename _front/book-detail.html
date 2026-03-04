@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tom troc</title>
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+        <!--styles-->
+        <link href="./dist/output.css" rel="stylesheet">
+        
+        <!--scripts-->
+        <script src="./assets/js/scripts.js" defer></script>
+    </head>
+    <body class="bg-tomTroc-bg">
+        <!--HEADER-->
+        <header>
+            <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center">
+                
+                <img src="./assets/img/logo.svg" alt="Tom Troc" class="h-10">
+                <button id="menu-btn" class="md:hidden ml-auto">
+                    <img src="./assets/img/icon-menu.svg" alt="Menu" class="h-6">
+                </button>
+                <!-- Menu -->
+                <ul id="menu"
+                    class="hidden absolute top-16 left-0 w-full bg-white 
+                        flex flex-col gap-4 p-6 text-sm font-inter
+                        md:static md:flex md:flex-row md:items-center 
+                        md:gap-8 md:p-0 md:bg-transparent 
+                        md:flex-1 md:ml-8">
+
+                    <li>
+                        <a href="#" class="block py-2 font-semibold hover:text-tomTroc-green">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Nos livres à l'échange</a>
+                    </li>
+                    <li class="md:ml-auto flex items-center gap-2">
+                        <img src="./assets/img/icon-message.svg" alt="" class="h-5"> <a href="#" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2">10</span></a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                    </li>
+                </ul>
+
+            </nav>
+        </header>
+        <!--CONTENT-->
+        <main>
+            
+            <!--BLOCK DETAIL BOOK-->
+            <section class="bg-tomTroc-bg ">
+                <div class="pt-4 pb-0 max-w-full">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        
+                        <div class="">
+                            <img src="assets/img/livre1.png" class="w-full">
+                        </div>
+                         <div class="bg-tomTroc-light py-12 px-5 md:ps-16 md:pe-20">
+                            <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
+                                The Kinkfolk Table
+                            </h2>
+                            <p class="text-base font-inter text-tomTroc-grey">par Nathan Williams</p>
+                            <hr class="w-7 my-5">
+                            <h3 class="font-inter font-semibold text-xs text-tomTroc-darkgrey">DESCRIPTION</h3>
+                            <p class="font-inter text-sm text-tomTroc-darkgrey">
+                                J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre captivante. Ce livre va bien au-delà d'une simple collection de recettes ; il célèbre l'art de partager des moments authentiques autour de la table. <br>
+                                <br>
+                                Les photographies magnifiques et le ton chaleureux captivent dès le départ, transportant le lecteur dans un voyage à travers des recettes et des histoires qui mettent en avant la beauté de la simplicité et de la convivialité. <br>
+                                <br>
+                                Chaque page est une invitation à ralentir, à savourer et à créer des souvenirs durables avec les êtres chers. <br>
+                                <br>
+                                'The Kinfolk Table' incarne parfaitement l'esprit de la cuisine et de la camaraderie, et il est certain que ce livre trouvera une place spéciale dans le cœur de tout amoureux de la cuisine et des rencontres inspirantes.<br>
+                            </p>
+                            <h3 class="py-5 font-inter font-semibold text-xs text-tomTroc-darkgrey">PROPRIÉTAIRE</h3>
+                            <div class="flex items-center gap-3 w-40 px-3 py-1.5 bg-white rounded-full shadow-sm">
+                                <img src="assets/img/profile_picture.jpg" class="w-12 h-12 rounded-full object-cover">
+                                <span class="text-inter text-base text-tomTroc-darkgrey">Alexlecture</span>
+                            </div>
+                            <a href="#" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full text-center">
+                                Envoyer un message
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!--FOOTER-->
+        <footer class="bg-white py-6 mt-0">
+            <div class="max-w-6xl mx-auto px-4 ">
+                <ul class="flex flex-col md:flex-row md:justify-end gap-4 md:gap-8 text-sm text-gray-600 items-center">
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Politique de confidentialité</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Mentions légales</a></li>
+                    <li>Tom Troc©</li>
+                    <li><img src="./assets/img/logo-footer.svg" alt="Logo footer" class="w-6 h-6"></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

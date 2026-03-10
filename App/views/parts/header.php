@@ -29,7 +29,7 @@
                         <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                        <a href="/connexion" class="block py-2 hover:text-tomTroc-green">Connexion</a>
                     </li>
                 </ul>
 

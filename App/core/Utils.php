@@ -5,4 +5,9 @@ Class Utils {
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
+
+    public function isConnected() : bool
+    {
+        return !isset($_SESSION['user']);
+    }
 }

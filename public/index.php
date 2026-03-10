@@ -20,6 +20,14 @@ switch ($uri) {
 		$bookController = new BookController();
 		$bookController->detailBook();
 		break;
+	case 'connexion':
+		$bookController = new UserController();
+		$bookController->connexionUser();
+		break;
+	case 'inscription':
+		$bookController = new UserController();
+		$bookController->registerUser();
+		break;
 	default:
 		// Page d'accueil ou 404
 		echo 'Page non trouvée';

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tom troc</title>
+        <!--fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+        <!--styles-->
+        <link href="./dist/output.css" rel="stylesheet">
+        
+        <!--scripts-->
+        <script src="./assets/js/scripts.js" defer></script>
+    </head>
+    <body class="bg-tomTroc-bg">
+        <!--HEADER-->
+        <header>
+            <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center">
+                
+                <img src="./assets/img/logo.svg" alt="Tom Troc" class="h-10">
+                <button id="menu-btn" class="md:hidden ml-auto">
+                    <img src="./assets/img/icon-menu.svg" alt="Menu" class="h-6">
+                </button>
+                <!-- Menu -->
+                <ul id="menu"
+                    class="hidden absolute top-16 left-0 w-full bg-white 
+                        flex flex-col gap-4 p-6 text-sm font-inter
+                        md:static md:flex md:flex-row md:items-center 
+                        md:gap-8 md:p-0 md:bg-transparent 
+                        md:flex-1 md:ml-8">
+
+                    <li>
+                        <a href="#" class="block py-2 font-semibold hover:text-tomTroc-green">Accueil</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Nos livres à l'échange</a>
+                    </li>
+                    <li class="md:ml-auto flex items-center gap-2">
+                        <img src="./assets/img/icon-message.svg" alt="" class="h-5"> <a href="#" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2">10</span></a>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                    </li>
+                </ul>
+
+            </nav>
+        </header>
+        <!--CONTENT-->
+        <main>
+            
+            <!--BLOCK CONNEXION-->
+            <section class="bg-tomTroc-bg ">
+                <div class="mx-auto pt-4 pb-0 max-w-6xl">
+                    <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
+                        Mon compte
+                    </h2>
+                </div>
+                <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pb-10">
+                         <div class="bg-white py-12 px-5 justify-items-center rounded-lg md:ps-16 md:pe-20">
+                            
+                            <img src="assets/img/profile_picture.jpg" class="w-32 h-32 rounded-full">
+                            <p class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter">modifier</p>
+                            <hr class="pb-5 px-24">
+                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl">natalyre</p>
+                            <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis 1 an</p>
+                            <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
+                            <p class="flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4">4 livres</p>
+                           
+                        </div>
+                        <div class="bg-white rounded-lg py-12 px-7">
+                            <p>
+                                Vos informations personnelles
+                            </p>
+                            <form method="POST" action="" class="space-y-6">
+                                <div>
+                                    <label for="email" class="block text-sm font-inter mb-2 text-tomTroc-grey">
+                                        Adresse email
+                                    </label>
+                                    <input 
+                                        type="email"
+                                        name="email"
+                                        id="email"
+                                        class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
+                                    >
+                                </div>
+                                <div>
+                                    <label for="password" class="block text-sm font-inter mb-2 text-tomTroc-grey">
+                                        Mot de passe
+                                    </label>
+                                    <input 
+                                        type="password"
+                                        name="password"
+                                        id="password"
+                                        class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
+                                    >
+                                </div>
+                                <div>
+                                    <label for="pseudo" class="block text-sm font-inter mb-2 text-tomTroc-grey">
+                                        Pseudo
+                                    </label>
+                                    <input 
+                                        type="text"
+                                        name="pseudo"
+                                        id="pseudo"
+                                        class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
+                                    >
+                                </div>
+                                <button 
+                                    type="submit"
+                                    class="w-full bg-tomTroc-bg text-tomTroc-green border-solid border-2 border-tomTroc-green font-inter font-semibold px-6 py-3 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition"
+                                >
+                                    Enregistrer
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
+                    <div class="gap-5 pb-10 rounded-lg space-y-6 md:space-y-0">
+                        <div class="bg-white grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-t-lg md:rounded-b-none">
+                            <div class="order-1 row-span-3">
+                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
+                            </div>
+                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
+                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
+                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:pt-0 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
+                            <div class="order-4 font-inter text-xs pt-2 md:order-5 md:px-2"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
+                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
+                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
+                        </div>
+                        <div class="bg-white md:bg-tomTroc-blue grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
+                            <div class="order-1 row-span-3">
+                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
+                            </div>
+                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
+                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
+                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
+                            <div class="order-4 font-inter text-xs  pt-2 md:px-2 md:order-5"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
+                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
+                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
+                        </div>
+                        <div class="bg-white grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-t-none md:rounded-b-lg">
+                            <div class="order-1 row-span-3">
+                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
+                            </div>
+                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
+                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
+                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
+                            <div class="order-4 font-inter text-xs  pt-2 md:px-2 md:order-5"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
+                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
+                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
+                        </div>
+                    </div>
+                </div>    
+            </section>
+        </main>
+        <!--FOOTER-->
+        <footer class="bg-white py-6 mt-0">
+            <div class="max-w-6xl mx-auto px-4 ">
+                <ul class="flex flex-col md:flex-row md:justify-end gap-4 md:gap-8 text-sm text-gray-600 items-center">
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Politique de confidentialité</a></li>
+                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Mentions légales</a></li>
+                    <li>Tom Troc©</li>
+                    <li><img src="./assets/img/logo-footer.svg" alt="Logo footer" class="w-6 h-6"></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

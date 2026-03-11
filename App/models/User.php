@@ -9,7 +9,7 @@ Class User{
      private string $password;
      private string $photo;
      private datetime $created_at;
-     private datetime $updated_at;
+     private ?datetime $updated_at;
  
      public function __construct(array $data){
           $this->id = $data['id'];
@@ -18,7 +18,7 @@ Class User{
           $this->password = $data['password'];
           $this->photo = $data['photo'];
           $this->created_at = new datetime($data['created_at']);
-          $this->updated_at = new datetime($data['updated_at']);
+          $this->updated_at = $data['updated_at'] ? new DateTime($data['updated_at']) : null;
      }
 
      public function __toString(){

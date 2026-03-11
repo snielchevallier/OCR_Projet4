@@ -21,12 +21,24 @@ switch ($uri) {
 		$bookController->detailBook();
 		break;
 	case 'connexion':
-		$bookController = new UserController();
-		$bookController->connexionUser();
+		$userController = new UserController();
+		$userController->connexionUser();
+		break;
+	case 'connect':
+		$userController = new UserController();
+		$userController->connectUser();
+		break;
+	case 'disconnect':
+		$userController = new UserController();
+		$userController->disconnectUser();
 		break;
 	case 'inscription':
-		$bookController = new UserController();
-		$bookController->registerUser();
+		$userController = new UserController();
+		$userController->registerUser();
+		break;
+	case 'profil':
+		$userController = new UserController();
+		$userController->profileUser();
 		break;
 	default:
 		// Page d'accueil ou 404

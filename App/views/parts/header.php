@@ -29,7 +29,16 @@
                         <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
                     </li>
                     <li>
+                        <?php
+                        if(Utils::isConnected()){
+                        ?>
+                        <a href="/disconnect" class="block py-2 hover:text-tomTroc-green">Déconnexion</a>
+                        <?php
+                        }else{
+                        ?>
                         <a href="/connexion" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                        <?php
+                        }?>
                     </li>
                 </ul>
 

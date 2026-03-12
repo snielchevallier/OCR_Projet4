@@ -66,4 +66,8 @@ class DBManager
         return $query;
     }
     
+    public function lastInsertId(): string
+    {
+        return $this->db->lastInsertId();
+    }
 }

@@ -40,7 +40,7 @@ class UserController{
             Utils::redirect("connexion",['errorMessage' => $e->getMessage()]);
         }
       
-       Utils::redirect("/");
+       Utils::redirect("/account");
 
     }
 
@@ -51,8 +51,12 @@ class UserController{
         Utils::redirect("/");
     }
 
-    //registerUser
-
+    //traitement registerUser
+    public function addUser(): void{
+        $userManager = new UserManager();
+        $user = $userManager->addUser();
+    }
+    
     //page profileUser
     public function profileUser(): void{
         $userManager = new UserManager();
@@ -66,5 +70,19 @@ class UserController{
         }
     }
     
+    //page account User
+    public function accountUser(): void{
+        $userManager = new UserManager();
+        $idUser=$_SESSION['idUser'];
+        $user = $userManager->getUserById(intval($idUser));
+        if(isset($user)){
+            $view = new View("account");
+            $view->render("user-account", ['user' => $user]);
+        }else{
+            Utils::redirect("/");
+        }
+    }
+
+    //traitement updateuser
 
 }

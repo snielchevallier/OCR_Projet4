@@ -1,61 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tom troc</title>
-        <!--fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
-        <!--styles-->
-        <link href="./dist/output.css" rel="stylesheet">
-        
-        <!--scripts-->
-        <script src="./assets/js/scripts.js" defer></script>
-    </head>
-    <body class="bg-tomTroc-bg">
-        <!--HEADER-->
-        <header>
-            <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center">
-                
-                <img src="./assets/img/logo.svg" alt="Tom Troc" class="h-10">
-                <button id="menu-btn" class="md:hidden ml-auto">
-                    <img src="./assets/img/icon-menu.svg" alt="Menu" class="h-6">
-                </button>
-                <!-- Menu -->
-                <ul id="menu"
-                    class="hidden absolute top-16 left-0 w-full bg-white 
-                        flex flex-col gap-4 p-6 text-sm font-inter
-                        md:static md:flex md:flex-row md:items-center 
-                        md:gap-8 md:p-0 md:bg-transparent 
-                        md:flex-1 md:ml-8">
-
-                    <li>
-                        <a href="#" class="block py-2 font-semibold hover:text-tomTroc-green">Accueil</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 hover:text-tomTroc-green">Nos livres à l'échange</a>
-                    </li>
-                    <li class="md:ml-auto flex items-center gap-2">
-                        <img src="./assets/img/icon-message.svg" alt="" class="h-5"> <a href="#" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2">10</span></a>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
-                    </li>
-                    <li>
-                        <a href="#" class="block py-2 hover:text-tomTroc-green">Connexion</a>
-                    </li>
-                </ul>
-
-            </nav>
-        </header>
-        <!--CONTENT-->
-        <main>
-            
-            <!--BLOCK ACCOUNT-->
+ <!--BLOCK ACCOUNT-->
             <section class="bg-tomTroc-bg ">
                 <div class="mx-auto pt-4 pb-0 max-w-6xl">
                     <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
@@ -69,8 +12,8 @@
                             <img src="assets/img/profile_picture.jpg" class="w-32 h-32 rounded-full">
                             <p class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter">modifier</p>
                             <hr class="pb-5 px-24">
-                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl">natalyre</p>
-                            <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis 1 an</p>
+                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></p>
+                            <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4">4 livres</p>
                            
@@ -88,6 +31,7 @@
                                         type="email"
                                         name="email"
                                         id="email"
+                                        value="<?=$user->getEmail()?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -110,6 +54,7 @@
                                         type="text"
                                         name="pseudo"
                                         id="pseudo"
+                                        value="<?=$user->getPseudo()?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -170,17 +115,3 @@
                     </div>
                 </div>    
             </section>
-        </main>
-        <!--FOOTER-->
-        <footer class="bg-white py-6 mt-0">
-            <div class="max-w-6xl mx-auto px-4 ">
-                <ul class="flex flex-col md:flex-row md:justify-end gap-4 md:gap-8 text-sm text-gray-600 items-center">
-                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Politique de confidentialité</a></li>
-                    <li><a href="#" class="text-sm text-gray-600 hover:text-black">Mentions légales</a></li>
-                    <li>Tom Troc©</li>
-                    <li><img src="./assets/img/logo-footer.svg" alt="Logo footer" class="w-6 h-6"></li>
-                </ul>
-            </div>
-        </footer>
-    </body>
-</html>

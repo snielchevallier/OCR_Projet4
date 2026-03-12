@@ -6,7 +6,12 @@
                             <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
                                 Inscription
                             </h2>
-                            <form method="POST" action="" class="space-y-6">
+                            <?php if (Utils::request("errorMessage")): ?>
+                            <p class="text-sm font-inter text-tomTroc-red text-center mb-6 md:mb-12">
+                                <?=Utils::request("errorMessage")?>
+                            </p>
+                            <?php endif; ?>
+                            <form method="POST" action="/addUser" class="space-y-6">
                                 
                                 <div>
                                     <label for="pseudo" class="block text-sm font-inter mb-2 text-tomTroc-grey">

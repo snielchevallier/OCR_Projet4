@@ -6,16 +6,11 @@
                             <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
                                 Connexion
                             </h2>
-                            <?php
-                            $error=Utils::request("errorMessage");
-                            if(isset($error)){
-                            ?>
+                            <?php if (Utils::request("errorMessage")): ?>
                             <p class="text-sm font-inter text-tomTroc-red text-center mb-6 md:mb-12">
                                 Connexion refusée, vérifiez votre email et/ou votre mot de passe.
                             </p>
-                            <?php
-                            }
-                            ?>
+                            <?php endif; ?>
                             <form method="POST" action="/connect" class="space-y-6">
                                 <div>
                                     <label for="email" class="block text-sm font-inter mb-2 text-tomTroc-grey">

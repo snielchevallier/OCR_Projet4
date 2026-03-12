@@ -2,34 +2,38 @@
 
 declare(strict_types=1);
 
-Class User{
-     private int $id;
+class User{
+     private ?int $id;
      private string $pseudo;
      private string $email;
      private string $password;
-     private string $photo;
-     private datetime $created_at;
-     private ?datetime $updated_at;
+     private ?string $photo;
+     private DateTime $created_at;
+     private ?DateTime $updated_at;
  
      public function __construct(array $data){
-          $this->id = $data['id'];
-          $this->pseudo = $data['pseudo'];
-          $this->email = $data['email'];
-          $this->password = $data['password'];
-          $this->photo = $data['photo'];
-          $this->created_at = new datetime($data['created_at']);
-          $this->updated_at = $data['updated_at'] ? new DateTime($data['updated_at']) : null;
+          $this->id = $data['id'] ?? null;
+          $this->pseudo = $data['pseudo'] ?? '';
+          $this->email = $data['email'] ?? '';
+          $this->password = $data['password'] ?? '';
+          $this->photo = $data['photo'] ?? null;
+          $this->created_at = !empty($data['created_at']) ? new DateTime($data['created_at']) : new DateTime();
+          $this->updated_at = !empty($data['updated_at']) ? new DateTime($data['updated_at']) : null;
      }
 
-     public function __toString(){
+     public function __toString(): string{
           return $this->pseudo;
      }
 
-     public function getId(): int{
+     public function setId(int $id): void{
+        $this->id = $id;
+     }
+
+     public function getId(): ?int{
         return $this->id;
      }
 
-     public function setPseudo(string $pseudo){
+     public function setPseudo(string $pseudo): void{
           $this->pseudo = $pseudo;
      }
 
@@ -37,7 +41,7 @@ Class User{
            return $this->pseudo;
      }
 
-      public function setEmail(string $pseudo){
+      public function setEmail(string $email): void{
           $this->email = $email;
      }
 
@@ -45,7 +49,7 @@ Class User{
            return $this->email;
      }
 
-      public function setPassword(string $password){
+      public function setPassword(string $password): void{
           $this->password = $password;
      }
 
@@ -53,27 +57,27 @@ Class User{
            return $this->password;
      }
 
-      public function setPhoto(string $photo){
+      public function setPhoto(?string $photo): void{
           $this->photo = $photo;
      }
 
-     public function getPhoto():string{
+     public function getPhoto():?string{
            return $this->photo;
      }
 
-     public function setCreatedAt(datetime $created_at): void{
+     public function setCreatedAt(DateTime $created_at): void{
         $this->created_at = $created_at;
     }
 
-    public function getCreatedAt(): datetime{
+    public function getCreatedAt(): DateTime{
         return $this->created_at;
     }
 
-    public function setUpdatedAt(datetime $updated_at): void{
+    public function setUpdatedAt(?DateTime $updated_at): void{
         $this->updated_at = $updated_at;
     }
 
-    public function getUpdatedAt(): datetime{
+    public function getUpdatedAt(): ?DateTime{
         return $this->updated_at;
     }
 }

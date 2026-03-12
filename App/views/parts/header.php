@@ -25,20 +25,17 @@
                     <li class="md:ml-auto flex items-center gap-2">
                         <img src="./assets/img/icon-message.svg" alt="" class="h-5"> <a href="#" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2">10</span></a>
                     </li>
+                    <?php if (Utils::isConnected()): ?>
                     <li class="flex items-center gap-2">
-                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="#" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
+                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="/account" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
                     </li>
+                    <?php endif; ?>
                     <li>
-                        <?php
-                        if(Utils::isConnected()){
-                        ?>
+                        <?php if (Utils::isConnected()): ?>
                         <a href="/disconnect" class="block py-2 hover:text-tomTroc-green">Déconnexion</a>
-                        <?php
-                        }else{
-                        ?>
+                        <?php else: ?>
                         <a href="/connexion" class="block py-2 hover:text-tomTroc-green">Connexion</a>
-                        <?php
-                        }?>
+                        <?php endif; ?>
                     </li>
                 </ul>
 

@@ -36,9 +36,17 @@ switch ($uri) {
 		$userController = new UserController();
 		$userController->registerUser();
 		break;
+	case 'addUser':
+		$userController = new UserController();
+		$userController->addUser();
+		break;
 	case 'profil':
 		$userController = new UserController();
 		$userController->profileUser();
+		break;
+	case 'account':
+		$userController = new UserController();
+		$userController->accountUser();
 		break;
 	default:
 		// Page d'accueil ou 404

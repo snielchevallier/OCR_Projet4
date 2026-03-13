@@ -54,7 +54,50 @@ class UserController{
     //traitement registerUser
     public function addUser(): void{
         $userManager = new UserManager();
-        $user = $userManager->addUser();
+        //récupére les données
+        $pseudo = Utils::request("pseudo");
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+
+        try{
+            //vérifie les données reçues
+            if (empty($pseudo) || empty($email) || empty($password)) {
+                throw new Exception("Tous les champs sont obligatoires.");
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("Email invalide.");
+            }
+                    
+            //vérifie que le mail du user n'existe pas
+            if ($userManager->getUserByEmail($email)) {
+                throw new Exception("Cet email est déjà utilisé.");
+            }
+
+            //vérifie que le pseudo du user n'existe pas
+            if ($userManager->getUserByPseudo($pseudo)) {
+                throw new Exception("Ce pseudo est déjà utilisé.");
+            }
+            
+            //crée un objet User
+            $user = new User([
+                'pseudo' => $pseudo,
+                'email' => $email,
+                'password' => password_hash($password, PASSWORD_DEFAULT)
+            ]);
+            $usercreated = $userManager->addUser($user);
+
+            //connecte le User
+            $_SESSION['user'] = $usercreated;
+            $_SESSION['idUser'] = $usercreated->getId();
+        }catch (Exception $e) {
+            echo $e->getMessage();
+            Utils::redirect("inscription",['errorMessage' => $e->getMessage()]);
+        }
+        //renvoie vers la page account
+        Utils::redirect("account");
+
+
+       
     }
     
     //page profileUser
@@ -84,5 +127,84 @@ class UserController{
     }
 
     //traitement updateuser
+    public function updateUser(): void {
+        $userManager = new UserManager();
+        //récupére les données
+        $pseudo = Utils::request("pseudo");
+        $email = Utils::request("email");
+        $password = Utils::request("password");
+        $photo = Utils::requestFile("photo");
 
+        try{
+            //récupère un User à partir de l'id user de la session
+            $user=$userManager->getUserById($_SESSION['idUser']);
+            if (!$user){
+                throw new Exception("L'utilisateur est introuvable");
+            }
+
+            //verifie présence d'une image 
+            if($photo["error"]<>4){
+                //vérifie la validité d'une image
+                if($photo['error']===0){
+                    $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+                    $newPhoto = uniqid() . '.' . $extension;
+                    
+                }else{
+                    throw new Exception("L'image uploadée est invalide.");
+                }
+            }
+            
+
+            //vérifie les données reçues
+            if (empty($pseudo) || empty($email)) {
+                throw new Exception("Tous les champs sont obligatoires.");
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                throw new Exception("Email invalide.");
+            }
+            
+            //met à jour les infos de l'instance User
+
+            //si l'email reçu est différent de l'existant, vérifie que le nouvel email du user n'existe pas
+            if($email != $user->getEmail()){
+                if ($userManager->getUserByEmail($email)) {
+                    throw new Exception("Cet email est déjà utilisé.");
+                }else{
+                    $user->setEmail($email);
+                }
+            }
+
+            //si le pseudo reçu est différent de l'existant, vérifie que le nouvel pseudo du user n'existe pas
+            if($pseudo != $user->getPseudo()){
+                if ($userManager->getUserByPseudo($pseudo)) {
+                    throw new Exception("Ce pseudo est déjà utilisé.");
+                }else{
+                    $user->setPseudo($pseudo);
+                }
+            }
+
+            if(!empty($password)){
+                $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            }
+
+            if(isset($newPhoto)){
+                $fileToRemove=$user->getPhoto();
+                //supprime l'ancienne photo
+                if(isset($fileToRemove)){
+                    unlink(UPLOADS_PATH .'users/'. $user->getPhoto());
+                }
+                $user->setPhoto($newPhoto);
+                move_uploaded_file($_FILES['photo']['tmp_name'], UPLOADS_PATH .'users/'. $newPhoto);
+
+            }
+            $userManager->updateUser($user);
+        } catch (Exception $e) {
+            
+            Utils::redirect("account",['errorMessage' => $e->getMessage()]);
+        }
+
+        Utils::redirect("account",['message' => "modification effectuée."]);
+        
+        
+    }
 }

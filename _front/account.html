@@ -64,10 +64,12 @@
                 </div>
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pb-10">
-                         <div class="bg-white py-12 px-5 justify-items-center rounded-lg md:ps-16 md:pe-20">
+                         <div class="bg-white py-12 px-5 flex flex-col items-center rounded-lg md:ps-16 md:pe-20">
                             
                             <img src="assets/img/profile_picture.jpg" class="w-32 h-32 rounded-full">
-                            <p class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter">modifier</p>
+                            <label for="file-upload" class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter cursor-pointer hover:underline">
+                                modifier
+                            </label>
                             <hr class="pb-5 px-24">
                             <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl">natalyre</p>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis 1 an</p>
@@ -80,6 +82,7 @@
                                 Vos informations personnelles
                             </p>
                             <form method="POST" action="" class="space-y-6">
+                                <input id="file-upload" type="file" class="hidden">
                                 <div>
                                     <label for="email" class="block text-sm font-inter mb-2 text-tomTroc-grey">
                                         Adresse email

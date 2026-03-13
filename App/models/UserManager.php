@@ -33,37 +33,7 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
-    public function addUser(): void {
-        //récupére les données
-        $pseudo = Utils::request("pseudo");
-        $email = Utils::request("email");
-        $password = Utils::request("password");
-
-        try{
-        //vérifie les données reçues
-         if (empty($pseudo) || empty($email) || empty($password)) {
-            throw new Exception("Tous les champs sont obligatoires.");
-        }
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new Exception("Email invalide.");
-        }
-                
-        //vérifie que le mail du user n'existe pas
-        if ($this->getUserByEmail($email)) {
-            throw new Exception("Cet email est déjà utilisé.");
-        }
-
-        //vérifie que le pseudo du user n'existe pas
-        if ($this->getUserByPseudo($pseudo)) {
-            throw new Exception("Ce pseudo est déjà utilisé.");
-        }
-        
-        //crée un objet User
-        $user = new User([
-            'pseudo' => $pseudo,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        ]);
+    public function addUser(User $user): User {
         //Ajoute le user
         $sql="INSERT INTO users (pseudo, email, password, created_at) VALUES (:pseudo, :email,:password, NOW())";
         $result = $this->db->query($sql, [
@@ -73,17 +43,18 @@ class UserManager extends AbstractEntityManager
         ]);
         $user->setId((int) $this->db->lastInsertId());
 
-        //connecte le User
-        $_SESSION['user'] = $user;
-        $_SESSION['idUser'] = $user->getId();
+        return $user;
+    }
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
-            Utils::redirect("inscription",['errorMessage' => $e->getMessage()]);
-        }
-        //renvoie vers la page account
-        Utils::redirect("account");
-        
-        
+    public function updateUser(User $user): void {
+            //Met à jour la base
+            $sql="UPDATE users SET pseudo=:pseudo, email=:email, password=:password, photo=:photo, updated_at=NOW() WHERE id=:id";
+            $result = $this->db->query($sql, [
+                'pseudo' => $user->getPseudo(),
+                'email' => $user->getEmail(),
+                'password' => $user->getPassword(),
+                'photo' => $user->getPhoto(),
+                'id' => $user->getId()
+            ]);
     }
 }

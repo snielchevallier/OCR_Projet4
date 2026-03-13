@@ -30,7 +30,7 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
                          <?php foreach ($books as $book): ?>
                             <div class="bg-white rounded-b-lg w-40 md:w-52">
-                            <div class="bg-no-repeat bg-cover w-full aspect-square" style="background-image: url('<?= UPLOADS_PATH ?>books/<?= $book->getCover() ?>');">
+                            <div class="bg-no-repeat bg-cover w-full aspect-square" style="background-image: url('<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>');">
                             </div>
                             <h3 class="text-sm font-inter font-semibold my-2 px-2 text-left"><?= $book->getTitle() ?></h3>
                             <p class="text-xs font-inter text-tomTroc-grey mb-4 px-2 text-left"><?= $book->getAuthor() ?></p>

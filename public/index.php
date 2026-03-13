@@ -40,6 +40,10 @@ switch ($uri) {
 		$userController = new UserController();
 		$userController->addUser();
 		break;
+	case 'updateUser':
+		$userController = new UserController();
+		$userController->updateUser();
+		break;	
 	case 'profil':
 		$userController = new UserController();
 		$userController->profileUser();

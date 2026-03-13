@@ -1,11 +1,16 @@
 <?php
 
-Class Utils {
+class Utils {
     public static function request(string $variableName, mixed $defaultValue = null) : mixed
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
+    public static function requestFile(string $variableName, mixed $defaultValue = null) : mixed
+    {
+        return $_FILES[$variableName] ?? $defaultValue;
+    }
+    
     public static function isConnected() : bool
     {
         return isset($_SESSION['user']);

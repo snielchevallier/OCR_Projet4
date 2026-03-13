@@ -4,7 +4,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-5 pb-10">
                          <div class="bg-white py-12 px-5 justify-items-center rounded-lg md:ps-16 md:pe-20">
                             
-                            <img src="<?= ASSETS_PATH ?>img/icon-profile-default.svg" class="w-32 h-32 rounded-full">
+                            <?php if ($user->getPhoto()): ?>
+                               <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full">
+                            <?php else: ?>
+                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-32 h-32 rounded-full">
+                            <?php endif; ?>
                             <p class="pt-5 "><hr class="pt-5 px-24"></p>
                             <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></p>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>

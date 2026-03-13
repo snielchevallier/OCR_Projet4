@@ -7,22 +7,39 @@
                 </div>
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pb-10">
-                         <div class="bg-white py-12 px-5 justify-items-center rounded-lg md:ps-16 md:pe-20">
+                         <div class="bg-white py-12 px-5 flex flex-col items-center rounded-lg md:ps-16 md:pe-20">
                             
-                            <img src="assets/img/profile_picture.jpg" class="w-32 h-32 rounded-full">
-                            <p class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter">modifier</p>
+                            <?php if ($user->getPhoto()): ?>
+                               <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full">
+                            <?php else: ?>
+                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-32 h-32 rounded-full">
+                            <?php endif; ?>
+                            <label for="photo" class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter cursor-pointer hover:underline">
+                                modifier
+                            </label>
                             <hr class="pb-5 px-24">
-                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></p>
+                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=htmlspecialchars($user->getPseudo())?></p>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4">4 livres</p>
                            
                         </div>
                         <div class="bg-white rounded-lg py-12 px-7">
-                            <p>
+                            <p class="text-base">
                                 Vos informations personnelles
                             </p>
-                            <form method="POST" action="" class="space-y-6">
+                            <?php if (Utils::request("errorMessage")): ?>
+                            <p class="text-sm font-inter text-tomTroc-red text-center my-6 md:my-12">
+                                <?=Utils::request("errorMessage")?>
+                            </p>
+                            <?php endif; ?>
+                            <?php if (Utils::request("message")): ?>
+                            <p class="text-sm font-inter text-tomTroc-green text-center my-6 md:my-12">
+                                <?=Utils::request("message")?>
+                            </p>
+                            <?php endif; ?>
+                            <form method="POST" action="/updateUser" class="space-y-6" enctype="multipart/form-data">
+                                <input id="photo" name="photo" type="file" class="hidden" accept="image/*">
                                 <div>
                                     <label for="email" class="block text-sm font-inter mb-2 text-tomTroc-grey">
                                         Adresse email
@@ -31,7 +48,7 @@
                                         type="email"
                                         name="email"
                                         id="email"
-                                        value="<?=$user->getEmail()?>"
+                                        value="<?=htmlspecialchars($user->getEmail())?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -43,6 +60,7 @@
                                         type="password"
                                         name="password"
                                         id="password"
+                                        placeholder="••••••••"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -54,7 +72,7 @@
                                         type="text"
                                         name="pseudo"
                                         id="pseudo"
-                                        value="<?=$user->getPseudo()?>"
+                                        value="<?=htmlspecialchars($user->getPseudo())?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>

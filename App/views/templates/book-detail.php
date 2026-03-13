@@ -3,7 +3,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         
                         <div class="">
-                            <img src="<?= UPLOADS_PATH ?>books/<?= $book->getCover() ?>" class="w-full">
+                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full">
                         </div>
                          <div class="bg-tomTroc-light py-12 px-5 md:ps-16 md:pe-20">
                             <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">

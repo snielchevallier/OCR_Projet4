@@ -6,7 +6,7 @@ Class BookManager extends AbstractEntityManager
 {
     
     public function getAllBooks(): array{
-        $sql = "SELECT * FROM books ORDER BY updated_at DESC";
+        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id ORDER BY updated_at DESC";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -17,7 +17,7 @@ Class BookManager extends AbstractEntityManager
     }
 
     public function getNBooks(int $numbooks): array{
-         $sql = "SELECT * FROM books ORDER BY updated_at DESC LIMIT ".$numbooks;
+         $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id ORDER BY updated_at DESC LIMIT ".$numbooks;
         $result = $this->db->query($sql);
         $books = [];
 
@@ -28,7 +28,7 @@ Class BookManager extends AbstractEntityManager
     }
 
     public function getBookById(int $id): ?Book{
-        $sql ="SELECT * FROM books WHERE id=:id";
+        $sql ="SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE books.id=:id";
         $result = $this->db->query($sql, ['id' => $id]);
         $book = $result->fetch();
         if ($book) {
@@ -36,4 +36,6 @@ Class BookManager extends AbstractEntityManager
         }
         return null;
     }
+    
+
 }

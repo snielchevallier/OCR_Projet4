@@ -17,7 +17,10 @@ class BookController{
         $idBook=Utils::request('id', -1);
         $book = $bookManager->getBookById(intval($idBook));
 
+        $userManager = new UserManager();
+        $owner = $userManager->getUserById($book->getOwner_id());
+
         $view = new View("détail du livre");
-        $view->render("book-detail", ['book' => $book]);
+        $view->render("book-detail", ['book' => $book, 'owner' => $owner]);
     }
 }

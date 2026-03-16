@@ -9,6 +9,7 @@ Class Book{
     private string $description;
     private string $cover;
     private int $owner_id;
+    private string $owner_name;
     private datetime $created_at;
     private datetime $updated_at;
 
@@ -19,6 +20,7 @@ Class Book{
         $this->description = $data['description'];
         $this->cover = $data['cover'];
         $this->owner_id = $data['owner_id'];
+         $this->owner_name = $data['owner_name'];
         $this->created_at = new datetime($data['created_at']);
         $this->updated_at = new datetime($data['updated_at']);
     }
@@ -81,5 +83,13 @@ Class Book{
 
     public function getOwner_id():int{
         return $this->owner_id;
+    }
+
+    public function setOwner_name(string $owner_name): void{
+        $this->owner_name;
+    }
+
+    public function getOwner_name():string{
+        return $this->owner_name;
     }
 }

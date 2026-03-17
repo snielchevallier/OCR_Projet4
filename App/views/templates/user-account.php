@@ -21,7 +21,9 @@
                             <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=htmlspecialchars($user->getPseudo())?></p>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
-                            <p class="flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4">4 livres</p>
+                            <p class="flex items-center text-tomTroc-darkgrey font-inter">
+                                <img src="assets/img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres
+                            </p>
                            
                         </div>
                         <div class="bg-white rounded-lg py-12 px-7">
@@ -86,6 +88,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <div class="gap-5 pb-10 rounded-lg space-y-6 md:space-y-0">
                         <div class="hidden md:grid bg-white grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] ps-16 pe-20 py-5 justify-items-left items-center rounded-t-lg rounded-b-none border-solid  border-b-2 border-tomTroc-bg">
@@ -97,39 +100,28 @@
                             <div class="order-6 col-span-2 font-inter font-semibold text-xs md:px-2">Action</div>
                             
                         </div>
-                        <div class="bg-white grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
+                        <?php 
+                        $i = 0;
+                        foreach ($books as $book):     
+                        ?>
+                        <div class="bg-white grid <?= $i%2 === 1 ? ' md:bg-tomTroc-blue' : '' ?> grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
                             <div class="order-1 row-span-3">
-                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
+                                <?php if ($book->getCover()): ?>
+                                    <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                <?php else: ?>
+                                    <img src="<?= ASSETS_PATH ?>/img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                <?php endif; ?>
                             </div>
-                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
-                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
-                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:pt-0 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
+                            <div class="order-2 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getTitle())?></div>
+                            <div class="order-3 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getAuthor())?></div>
+                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:pt-0 md:order-4 md:col-span-1"><?=htmlspecialchars(substr($book->getDescription(),0,100))?>...</div>
                             <div class="order-4 font-inter text-xs pt-2 md:order-5 md:px-2"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
                             <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
                             <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
                         </div>
-                        <div class="bg-white md:bg-tomTroc-blue grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
-                            <div class="order-1 row-span-3">
-                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
-                            </div>
-                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
-                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
-                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
-                            <div class="order-4 font-inter text-xs  pt-2 md:px-2 md:order-5"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
-                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
-                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
-                        </div>
-                        <div class="bg-white grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-t-none md:rounded-b-lg">
-                            <div class="order-1 row-span-3">
-                                <img src="assets/img/livre1.png" alt="title" class="w-20 h-20 aspect-square">
-                            </div>
-                            <div class="order-2 font-inter text-sm leading-3 md:px-2">The Kinkfolk Table</div>
-                            <div class="order-3 font-inter text-sm leading-3 md:px-2">Nathan Williams</div>
-                            <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:order-4 md:col-span-1">J'ai récemment plongé dans les pages de 'The Kinfolk Table' et j'ai été enchanté par cette œuvre...</div>
-                            <div class="order-4 font-inter text-xs  pt-2 md:px-2 md:order-5"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
-                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
-                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
-                        </div>
+                        <?php 
+                        $i++; 
+                        endforeach; ?>
                     </div>
                 </div>    
             </section>

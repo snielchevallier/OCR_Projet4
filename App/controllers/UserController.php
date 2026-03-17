@@ -118,9 +118,12 @@ class UserController{
         $userManager = new UserManager();
         $idUser=$_SESSION['idUser'];
         $user = $userManager->getUserById(intval($idUser));
+        
+        $bookManager = new BookManager();
+        $books=$bookManager->getBooksByOwner(intval($idUser));
         if(isset($user)){
             $view = new View("account");
-            $view->render("user-account", ['user' => $user]);
+            $view->render("user-account", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");
         }

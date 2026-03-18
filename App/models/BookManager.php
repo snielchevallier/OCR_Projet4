@@ -61,4 +61,9 @@ Class BookManager extends AbstractEntityManager
             ]);
     }
 
+    public function deleteBookById(int $id): void{
+        $sql = "DELETE FROM books WHERE id = :id";
+        $this->db->query($sql, ['id' => $id]);
+    }
+
 }

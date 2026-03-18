@@ -90,6 +90,16 @@
                 </div>
                 
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
+                    <?php if (Utils::request("bookErrorMessage")): ?>
+                        <p class="text-sm font-inter text-tomTroc-red text-center my-6 md:my-12">
+                            <?=Utils::request("bookErrorMessage")?>
+                        </p>
+                        <?php endif; ?>
+                        <?php if (Utils::request("bookMessage")): ?>
+                        <p class="text-sm font-inter text-tomTroc-green text-center my-6 md:my-12">
+                            <?=Utils::request("bookMessage")?>
+                        </p>
+                    <?php endif; ?>
                     <div class="gap-5 pb-10 rounded-lg space-y-6 md:space-y-0">
                         <div class="hidden md:grid bg-white grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] ps-16 pe-20 py-5 justify-items-left items-center rounded-t-lg rounded-b-none border-solid  border-b-2 border-tomTroc-bg">
                             <div class="order-1 font-inter font-semibold text-xs leading-3 md:px-2">Photo</div>
@@ -123,7 +133,7 @@
                             <?php endif; ?>
                             </div>
                             <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="/editer-livre?id=<?=$book->getId()?>" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
-                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
+                            <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="/supprimer-livre?id=<?=$book->getId()?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
                         </div>
                         <?php 
                         $i++; 

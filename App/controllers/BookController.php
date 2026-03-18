@@ -97,12 +97,23 @@ class BookController{
                 $bookManager->updateBook($book);
             } catch (Exception $e) {
                 
-                Utils::redirect("editer-livre?id=".$idBook,['errorMessage' => $e->getMessage()]);
+                Utils::redirect("editer-livre",['id'=>$idBook, 'errorMessage' => $e->getMessage()]);
             }
 
-            Utils::redirect("editer-livre?id=".$idBook,['message' => "modification effectuée."]);
+            Utils::redirect("editer-livre",['id'=>$idBook, 'message' => "modification effectuée."]);
         }else{
             Utils::redirect("connexion");
         }
+    }
+
+    public function deleteBook(): void {
+        $bookManager = new BookManager();
+        $idBook=Utils::request('id', -1);
+        try{
+            $book = $bookManager->deleteBookById(intval($idBook));
+        } catch (Exception $e) {
+            Utils::redirect("account",['bookErrorMessage' => $e->getMessage()]);
+        }
+        Utils::redirect("account",['bookMessage' =>"Suppression réussie."]);
     }
 }

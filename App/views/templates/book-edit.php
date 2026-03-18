@@ -8,6 +8,16 @@
                     </h2>
                 </div>
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
+                    <?php if (Utils::request("errorMessage")): ?>
+                        <p class="text-sm font-inter text-tomTroc-red text-center my-6 md:my-12">
+                            <?=Utils::request("errorMessage")?>
+                        </p>
+                        <?php endif; ?>
+                        <?php if (Utils::request("message")): ?>
+                        <p class="text-sm font-inter text-tomTroc-green text-center my-6 md:my-12">
+                            <?=Utils::request("message")?>
+                        </p>
+                    <?php endif; ?>
                     <div class="grid grid-cols-1 md:grid-cols-2 pb-10">
                          <div class="bg-white pt-6 px-5 flex flex-col items-center rounded-t-lg md:rounded-t-none md:rounded-l-lg md:ps-12 md:pe-18">
                             <p class="self-start block text-sm font-inter mb-2 text-tomTroc-grey">Photo</p>

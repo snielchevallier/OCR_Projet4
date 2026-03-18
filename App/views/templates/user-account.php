@@ -107,7 +107,7 @@
                         <div class="bg-white grid <?= $i%2 === 1 ? ' md:bg-tomTroc-blue' : '' ?> grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
                             <div class="order-1 row-span-3">
                                 <?php if ($book->getCover()): ?>
-                                    <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                    <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 ">
                                 <?php else: ?>
                                     <img src="<?= ASSETS_PATH ?>/img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
                                 <?php endif; ?>
@@ -115,8 +115,14 @@
                             <div class="order-2 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getTitle())?></div>
                             <div class="order-3 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getAuthor())?></div>
                             <div class="order-5 col-span-2 font-inter italic text-sm pt-4 md:px-2 md:pt-0 md:order-4 md:col-span-1"><?=htmlspecialchars(substr($book->getDescription(),0,100))?>...</div>
-                            <div class="order-4 font-inter text-xs pt-2 md:order-5 md:px-2"><span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span></div>
-                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
+                            <div class="order-4 font-inter text-xs pt-2 md:order-5 md:px-2">
+                            <?php if ($book->getStatus()==='available'): ?>
+                                <span class="bg-tomTroc-lightgreen py-1 px-2 rounded-full text-white">disponible</span>
+                            <?php else: ?>
+                                <span class="bg-tomTroc-lightred py-1 px-2 rounded-full text-white">non dispo.</span>
+                            <?php endif; ?>
+                            </div>
+                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="/editer-livre?id=<?=$book->getId()?>" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
                             <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="#" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
                         </div>
                         <?php 

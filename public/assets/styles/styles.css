@@ -991,6 +991,11 @@ video {
   background-color: rgb(109 197 161 / var(--tw-bg-opacity, 1));
 }
 
+.bg-tomTroc-lightred {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 109 109 / var(--tw-bg-opacity, 1));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));

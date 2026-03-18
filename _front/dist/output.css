@@ -752,12 +752,12 @@ video {
   height: 1.5rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .h-80 {
   height: 20rem;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-12 {
@@ -991,6 +991,11 @@ video {
   background-color: rgb(109 197 161 / var(--tw-bg-opacity, 1));
 }
 
+.bg-tomTroc-lightred {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 109 109 / var(--tw-bg-opacity, 1));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -1178,12 +1183,12 @@ video {
   padding-top: 1.25rem;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
 }
 
 .text-left {
@@ -1493,11 +1498,6 @@ video {
     border-bottom-left-radius: 0.5rem;
   }
 
-  .md\:rounded-t-none {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-  }
-
   .md\:rounded-b-none {
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -1511,6 +1511,11 @@ video {
   .md\:rounded-r-lg {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
+  }
+
+  .md\:rounded-t-none {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
   }
 
   .md\:bg-tomTroc-blue {
@@ -1545,16 +1550,16 @@ video {
     padding-inline-end: 5rem;
   }
 
+  .md\:ps-12 {
+    padding-inline-start: 3rem;
+  }
+
   .md\:ps-16 {
     padding-inline-start: 4rem;
   }
 
   .md\:pt-0 {
     padding-top: 0px;
-  }
-
-  .md\:ps-12 {
-    padding-inline-start: 3rem;
   }
 
   .md\:text-left {

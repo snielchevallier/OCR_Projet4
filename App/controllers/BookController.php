@@ -5,8 +5,13 @@ declare(strict_types=1);
 class BookController{
 
     public function listBooks(): void{
+        $search=Utils::request('search');
         $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();
+        if(isset($search)){
+            $books = $bookManager->searchBooks($search);
+        }else{
+            $books = $bookManager->getAllBooks();
+        }
         
         $view = new View("Liste des livres");
         $view->render("books", ['books' => $books]);

@@ -16,6 +16,17 @@ Class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    public function searchBooks(string $search): array{
+        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE title LIKE :search ORDER BY updated_at DESC";
+        $result = $this->db->query($sql,['search' => '%' . $search . '%']);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
+
     public function getNBooks(int $numbooks): array{
          $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id ORDER BY updated_at DESC LIMIT ".$numbooks;
         $result = $this->db->query($sql);

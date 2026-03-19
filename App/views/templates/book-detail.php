@@ -16,14 +16,16 @@
                                 <?= htmlspecialchars($book->getDescription()) ?>
                             </p>
                             <h3 class="py-5 font-inter font-semibold text-xs text-tomTroc-darkgrey">PROPRIÉTAIRE</h3>
-                            <div class="inline-flex  items-center gap-3 px-3 py-1.5 bg-white rounded-full shadow-sm">
-                                <?php if ($owner->getPhoto()): ?>
-                                <img src="<?= UPLOADS_URL ?>users/<?=$owner->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
-                                <?php else: ?>
-                                    <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
-                                <?php endif; ?>
-                                <span class="text-inter text-base text-tomTroc-darkgrey"><?= htmlspecialchars($owner->getPseudo()) ?></span>
-                            </div>
+                            <a href="/profil?id=<?=$owner->getId()?>">
+                                <div class="inline-flex  items-center gap-3 px-3 py-1.5 bg-white rounded-full shadow-sm">
+                                    <?php if ($owner->getPhoto()): ?>
+                                    <img src="<?= UPLOADS_URL ?>users/<?=$owner->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
+                                    <?php else: ?>
+                                        <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
+                                    <?php endif; ?>
+                                    <span class="text-inter text-base text-tomTroc-darkgrey"><?= htmlspecialchars($owner->getPseudo()) ?></span>
+                                </div>
+                            </a>
                             <a href="#" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full text-center">
                                 Envoyer un message
                             </a>

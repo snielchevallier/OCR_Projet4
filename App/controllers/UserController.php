@@ -106,8 +106,10 @@ class UserController{
         $idUser=Utils::request('id', -1);
         $user = $userManager->getUserById(intval($idUser));
         if(isset($user)){
+            $bookManager = new BookManager();
+            $books=$bookManager->getBooksByOwner(intval($idUser));
             $view = new View("profile");
-            $view->render("user-profile", ['user' => $user]);
+            $view->render("user-profile", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");
         }

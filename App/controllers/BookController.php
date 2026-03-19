@@ -21,12 +21,15 @@ class BookController{
         $bookManager = new BookManager();
         $idBook=Utils::request('id', -1);
         $book = $bookManager->getBookById(intval($idBook));
-
+        if(isset($book)){
         $userManager = new UserManager();
         $owner = $userManager->getUserById($book->getOwner_id());
 
         $view = new View("détail du livre: ".htmlspecialchars($book->getTitle()));
         $view->render("book-detail", ['book' => $book, 'owner' => $owner]);
+        }else{
+            Utils::redirect("nos-livres");
+        }
     }
 
     public function editBook():void{

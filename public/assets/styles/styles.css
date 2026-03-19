@@ -611,6 +611,10 @@ video {
   grid-column: span 2 / span 2;
 }
 
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+
 .row-span-2 {
   grid-row: span 2 / span 2;
 }
@@ -684,6 +688,10 @@ video {
   margin-top: 2rem;
 }
 
+.mt-auto {
+  margin-top: auto;
+}
+
 .block {
   display: block;
 }
@@ -694,6 +702,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.inline-flex {
+  display: inline-flex;
 }
 
 .table {
@@ -744,6 +756,14 @@ video {
   height: 1.5rem;
 }
 
+.h-80 {
+  height: 20rem;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -780,6 +800,10 @@ video {
   width: 100%;
 }
 
+.min-w-\[10rem\] {
+  min-width: 10rem;
+}
+
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -794,6 +818,10 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.resize-none {
+  resize: none;
 }
 
 .grid-cols-1 {
@@ -869,6 +897,18 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .rounded-full {
@@ -953,6 +993,11 @@ video {
 .bg-tomTroc-lightgreen {
   --tw-bg-opacity: 1;
   background-color: rgb(109 197 161 / var(--tw-bg-opacity, 1));
+}
+
+.bg-tomTroc-lightred {
+  --tw-bg-opacity: 1;
+  background-color: rgb(197 109 109 / var(--tw-bg-opacity, 1));
 }
 
 .bg-white {
@@ -1140,6 +1185,10 @@ video {
 
 .pt-5 {
   padding-top: 1.25rem;
+}
+
+.pt-6 {
+  padding-top: 1.5rem;
 }
 
 .pt-8 {
@@ -1453,6 +1502,21 @@ video {
     border-bottom-left-radius: 0.5rem;
   }
 
+  .md\:rounded-b-none {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .md\:rounded-l-lg {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .md\:rounded-r-lg {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
   .md\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -1488,6 +1552,10 @@ video {
 
   .md\:pe-20 {
     padding-inline-end: 5rem;
+  }
+
+  .md\:ps-12 {
+    padding-inline-start: 3rem;
   }
 
   .md\:ps-16 {

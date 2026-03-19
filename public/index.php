@@ -52,6 +52,18 @@ switch ($uri) {
 		$userController = new UserController();
 		$userController->accountUser();
 		break;
+	case 'editer-livre':
+		$bookController = new BookController();
+		$bookController->editBook();
+		break;
+	case 'update-book':
+		$bookController = new BookController();
+		$bookController->updateBook();
+		break;
+	case 'supprimer-livre':
+		$bookController = new BookController();
+		$bookController->deleteBook();
+		break;
 	default:
 		// Page d'accueil ou 404
 		echo 'Page non trouvée';

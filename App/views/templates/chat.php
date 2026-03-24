@@ -35,12 +35,18 @@
                         </div>
                     </div>
                     <div class="bg-tomTroc-light flex-1 h-[80vh] flex flex-col">
-                        <a href="#" class="block md:hidden text-xs text-tomTroc-grey font-inter px-5 mb-6 md:mb-12 md:mt-4">
+                        <a href="/messagerie" class="block md:hidden text-xs text-tomTroc-grey font-inter px-5 mb-6 md:mb-12 md:mt-4">
                             &larr; retour
                         </a>
                         <div class="inline-flex items-center gap-3 min-w-[10rem] px-3 py-1.5">
-                            <img src="assets/img/profile_picture.jpg" class="w-12 h-12 rounded-full object-cover">
-                            <span class="text-inter text-base font-semibold text-tomTroc-darkgrey whitespace-nowrap">Alexlecture un sacré lecteur </span>
+                             <?php if ($user_dest->getPhoto()): ?>
+                               <img src="<?= UPLOADS_URL ?>users/<?=$user_dest->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
+                            <?php else: ?>
+                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
+                            <?php endif; ?>
+                            <span class="text-inter text-base font-semibold text-tomTroc-darkgrey whitespace-nowrap">
+                                <?=$user_dest->getPseudo();?>
+                            </span>
                         </div>
                         <div class="flex flex-col flex-1 overflow-hidden">
                             <div id="conversation" class="flex-1 overflow-y-auto flex flex-col ">

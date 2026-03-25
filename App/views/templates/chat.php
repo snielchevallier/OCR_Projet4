@@ -39,7 +39,7 @@
                             &larr; retour
                         </a>
                         <div class="inline-flex items-center gap-3 min-w-[10rem] px-3 py-1.5">
-                             <?php if ($user_dest->getPhoto()): ?>
+                            <?php if ($user_dest->getPhoto()): ?>
                                <img src="<?= UPLOADS_URL ?>users/<?=$user_dest->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
                             <?php else: ?>
                                 <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
@@ -51,60 +51,38 @@
                         <div class="flex flex-col flex-1 overflow-hidden">
                             <div id="conversation" class="flex-1 overflow-y-auto flex flex-col ">
                                 <div class="mt-auto"></div>
-                                <div class="flex justify-end mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="block text-xs text-tomTroc-grey mb-1 text-right">
-                                            21.08 15:44
-                                        </span>
-                                        <div class="bg-tomTroc-blue text-tomTroc-darkgrey px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
+                                <?php foreach ($messages as $message): ?>
+                                    <?php if($message->getAuthorId()===$user_dest->getId()):?>
+                                    <div class="flex items-start gap-2 mb-4 px-5">
+                                        <div class="max-w-[80%]">
+                                            <span class="flex gap-2 items-center text-xs text-tomTroc-grey px-3 mb-2">
+                                                <?php if ($user_dest->getPhoto()): ?>
+                                                    <img src="<?= UPLOADS_URL ?>users/<?=$user_dest->getPhoto()?>" class="w-5 h-5 rounded-full object-cover"> 
+                                                <?php else: ?>
+                                                    <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-5 h-5 rounded-full object-cover"> 
+                                                
+                                                <?php endif; ?>
+                                                <?=$message->getCreatedAt()->format('d.m H:i')?>
+                                            </span>
+                                            <div class="bg-white px-4 py-2 rounded-lg">
+                                                <?=$message->getContent()?>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="flex items-start gap-2 mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="flex gap-2 items-center text-xs text-tomTroc-grey px-3 mb-2"><img src="assets/img/profile_picture.jpg" class="w-5 h-5 rounded-full object-cover"> 21.08 15:44</span>
-                                        <div class="bg-white px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
+                                    <?php else:?>
+                                        <div class="flex justify-end mb-4 px-5">
+                                            <div class="max-w-[80%]">
+                                                <span class="block text-xs text-tomTroc-grey mb-1 text-right">
+                                                    <?=$message->getCreatedAt()->format('d.m H:i')?>
+                                                </span>
+                                                <div class="bg-tomTroc-blue text-tomTroc-darkgrey px-4 py-2 rounded-lg">
+                                                    <?=$message->getContent()?>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-start gap-2 mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="flex gap-2 items-center text-xs text-tomTroc-grey px-3 mb-2"><img src="assets/img/profile_picture.jpg" class="w-5 h-5 rounded-full object-cover"> 21.08 15:44</span>
-                                        <div class="bg-white px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="flex justify-end mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="block text-xs text-tomTroc-grey mb-1 text-right">
-                                            21.08 15:44
-                                        </span>
-                                        <div class="bg-tomTroc-blue text-tomTroc-darkgrey px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="flex items-start gap-2 mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="flex gap-2 items-center text-xs text-tomTroc-grey px-3 mb-2"><img src="assets/img/profile_picture.jpg" class="w-5 h-5 rounded-full object-cover"> 21.08 15:44</span>
-                                        <div class="bg-white px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="flex justify-end mb-4 px-5">
-                                    <div class="max-w-[80%]">
-                                        <span class="block text-xs text-tomTroc-grey mb-1 text-right">
-                                            21.08 15:44
-                                        </span>
-                                        <div class="bg-tomTroc-blue text-tomTroc-darkgrey px-4 py-2 rounded-lg">
-                                            Lorem ipsum dolor sit amet, consectetur .adipiscing elit, sed do eiusmod tempor 
-                                        </div>
-                                    </div>
-                                </div>
+                                    <?php endif;?>
+                                <?php endforeach; ?>
+                                
                             </div>
                             <form method="POST" action="/sendMessage" class="px-5 my-8 md:flex gap-2 items-center md:items-stretch">
                                 <input type="hidden" name="dest" value="<?=$user_dest->getId();?>" />

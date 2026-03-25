@@ -24,4 +24,5 @@ Class ChatManager extends AbstractEntityManager {
         }
         return null;
     }
+
 }

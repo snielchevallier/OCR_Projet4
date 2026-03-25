@@ -18,17 +18,23 @@ class ChatController{
     }
 
     public function showChat(): void{
-        $dest=Utils::request("dest");
+        $dest_user=Utils::request("dest");
         $curr_user=$_SESSION['idUser'];
         //Charge tous les chats de l'utilisateur connecté
 
-        if(isset($dest)){
+        if(isset($dest_user)){
             //si il y a un destinataire, affiche la vue chat avec la partie message
             
-            $dest_user = $this->userManager->getUserById(intval($dest));
-            
+            $dest_user = $this->userManager->getUserById(intval($dest_user));
+            //charge les messages de la conversation
+            $curr_chat=$this->chatManager->getChatByParticipants(intval($curr_user), intval($dest_user->getId()));
+            if(!empty($curr_chat)){
+                $messages=$this->messageManager->getMessagesbyChat(intval($curr_chat->getId()));
+            }else{
+                $messages=[];
+            }
             $view = new View("Messagerie");
-            $view->render("chat",['user_dest' => $dest_user]);
+            $view->render("chat",['user_dest' => $dest_user,'messages'=>$messages]);
         }else{
             //si pas de destinataire, affiche la liste des chat sans la partie message
             $view = new View("Messagerie");

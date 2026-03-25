@@ -68,6 +68,10 @@ switch ($uri) {
 		$chatController = new ChatController();
 		$chatController->showChat();
 		break;
+	case 'sendMessage':
+		$chatController = new ChatController();
+		$chatController->sendMessage();
+		break;
 	default:
 		// Page d'accueil ou 404
 		echo 'Page non trouvée';

@@ -106,7 +106,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <form method="POST" class="px-5 my-8 md:flex gap-2 items-center md:items-stretch">
+                            <form method="POST" action="/sendMessage" class="px-5 my-8 md:flex gap-2 items-center md:items-stretch">
+                                <input type="hidden" name="dest" value="<?=$user_dest->getId();?>" />
                                 <input 
                                     type="text"
                                     name="message"

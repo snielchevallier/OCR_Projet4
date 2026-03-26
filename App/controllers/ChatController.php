@@ -21,7 +21,7 @@ class ChatController{
         $dest_user=Utils::request("dest");
         $curr_user=$_SESSION['idUser'];
         //Charge tous les chats de l'utilisateur connecté
-
+        $chats=$this->chatManager->getChatsByParticipant(intval($curr_user));
         if(isset($dest_user)){
             //si il y a un destinataire, affiche la vue chat avec la partie message
             
@@ -34,11 +34,11 @@ class ChatController{
                 $messages=[];
             }
             $view = new View("Messagerie");
-            $view->render("chat",['user_dest' => $dest_user,'messages'=>$messages]);
+            $view->render("chat",['user_dest' => $dest_user,'messages'=>$messages,'chats'=>$chats]);
         }else{
             //si pas de destinataire, affiche la liste des chat sans la partie message
             $view = new View("Messagerie");
-            $view->render("messaging");
+            $view->render("messaging",['chats'=>$chats]);
         }
         
         //rajouter dans l'objet Chat une propriété avec un tableau de tous les messages?

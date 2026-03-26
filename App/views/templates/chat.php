@@ -6,33 +6,30 @@
                         <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 mt-4">
                             Messagerie
                         </h2>
-                        <div class="border-solid border-b-2 bg-white border-white grid grid-cols-5 py-2 px-5 items-center w-full md:max-w-80">
-                            <div class="col-span-1">
-                                <img src="assets/img/profile_picture.jpg" class="w-12 h-12 rounded-full rowspan-2">
-                            </div>
-                            <div class="col-span-4 ps-2">
-                                <p class="font-inter text-sm text-tomTroc-darkgrey flex justify-between">Alexlecture<span class="self-item-right">15:43</span></p>
-                                <p class="font-inter text-xs text-tomTroc-grey">Lorem ipsum dolor sit amet, ...</p>
-                            </div>
-                        </div>
-                        <div class="border-solid border-b-2 border-white grid grid-cols-5 py-2 px-5 items-center  w-full md:max-w-80">
-                            <div class="col-span-1">
-                                <img src="assets/img/profile_picture.jpg" class="w-12 h-12 rounded-full rowspan-2">
-                            </div>
-                            <div class="col-span-4 ps-2">
-                                <p class="font-inter text-sm text-tomTroc-darkgrey flex justify-between">Alexlecture<span class="self-item-right">15:43</span></p>
-                                <p class="font-inter text-xs text-tomTroc-grey">Lorem ipsum dolor sit amet, ...</p>
-                            </div>
-                        </div>
-                        <div class="border-solid border-b-2 border-white grid grid-cols-5 py-2 px-5 items-center  w-full md:max-w-80">
-                            <div class="col-span-1">
-                                <img src="assets/img/profile_picture.jpg" class="w-12 h-12 rounded-full rowspan-2">
-                            </div>
-                            <div class="col-span-4 ps-2">
-                                <p class="font-inter text-sm text-tomTroc-darkgrey flex justify-between">Alexlecture<span class="self-item-right">15:43</span></p>
-                                <p class="font-inter text-xs text-tomTroc-grey">Lorem ipsum dolor sit amet, ...</p>
-                            </div>
-                        </div>
+                        <?php foreach ($chats as $chat): 
+                            $messageHour = new DateTime($chat['last_message_date']);
+                            ?>
+                            <a href="/messagerie?dest=<?=$chat['dest_user_id']?>">
+                                <div class="border-solid border-b-2 <?php if($chat['dest_user_id']===$user_dest->getId()):?>bg-white<?php endif;?> border-white grid grid-cols-5 py-2 px-5 items-center w-full md:max-w-80">
+                                    <div class="col-span-1">
+                                        <?php if(!empty($chat['dest_user_photo'])): ?>
+                                    <img src="<?= UPLOADS_URL ?>users/<?=$chat['dest_user_photo']?>" class="w-12 h-12 rounded-full rowspan-2">
+                                    <?php else: ?>
+                                        <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
+                                    <?php endif; ?>
+                                    </div>
+                                    <div class="col-span-4 ps-2">
+                                        <p class="font-inter text-sm text-tomTroc-darkgrey flex justify-between">
+                                            <?=$chat['dest_user_pseudo']?>
+                                            <span class="self-item-right"><?=$messageHour->format('H:i')?></span>
+                                        </p>
+                                        <p class="font-inter text-xs text-tomTroc-grey">
+                                            <?=$chat['last_message']?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                     <div class="bg-tomTroc-light flex-1 h-[80vh] flex flex-col">
                         <a href="/messagerie" class="block md:hidden text-xs text-tomTroc-grey font-inter px-5 mb-6 md:mb-12 md:mt-4">

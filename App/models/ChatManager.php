@@ -25,4 +25,38 @@ Class ChatManager extends AbstractEntityManager {
         return null;
     }
 
+    public function getChatsByParticipant(int $curr_user){
+        $sql = "SELECT 
+            c.id AS chat_id,
+            u.id AS dest_user_id,
+            u.pseudo AS dest_user_pseudo,
+            u.photo AS dest_user_photo,
+            m.content AS last_message,
+            m.created_at AS last_message_date
+        FROM chats c
+
+        JOIN chat_users cu ON cu.chat_id = c.id
+        JOIN chat_users cu2 ON cu2.chat_id = c.id AND cu2.user_id != :user_id
+        JOIN users u ON u.id = cu2.user_id
+
+        LEFT JOIN messages m ON m.id = (
+            SELECT m2.id
+            FROM messages m2
+            WHERE m2.chat_id = c.id
+            ORDER BY m2.created_at DESC
+            LIMIT 1
+        )
+
+        WHERE cu.user_id = :user_id
+        ORDER BY m.created_at DESC;";
+        
+        $result = $this->db->query($sql, ['user_id' => $curr_user]);
+        $chats = [];
+
+        while ($chat = $result->fetch()) {
+            $chats[] = $chat;
+        }
+        return $chats;
+    }
+
 }

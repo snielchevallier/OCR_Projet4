@@ -8,6 +8,7 @@ class Message{
     private int $author_id;
     private string $content;
     private DateTime $created_at;
+    private ?DateTime $viewed_at;
 
     public function __construct(array $data){
         $this->id = $data['id'] ?? null;
@@ -15,6 +16,7 @@ class Message{
         $this->author_id = (int)$data['author_id'];
         $this->content = (string)$data['content'];
         $this->created_at = !empty($data['created_at']) ? new DateTime($data['created_at']) : new DateTime();
+        $this->viewed_at = !empty($data['viewed_at']) ? new DateTime($data['viewed_at']) : NULL;
     }
 
     public function setId(int $id): void{
@@ -55,5 +57,13 @@ class Message{
     
     public function getCreatedAt(): DateTime{
         return $this->created_at;
+    }
+
+    public function setViewedAt(DateTime $viewed_at): void{
+        $this->viewed_at = $viewed_at;
+    }
+    
+    public function getViewdAt(): DateTime{
+        return $this->viewed_at;
     }
 }

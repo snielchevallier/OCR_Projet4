@@ -17,4 +17,12 @@ Class ChatUserManager extends AbstractEntityManager {
 
         return $chatUser;
     }
+
+    public function markAsRead(int $chat_id, int $user_id){
+        $sql="UPDATE chat_users SET last_read_at = NOW() WHERE chat_id = :chat_id AND user_id = :user_id";
+        $result = $this->db->query($sql,[
+            'chat_id' => $chat_id,
+            'user_id' => $user_id
+        ]);
+    }
 }

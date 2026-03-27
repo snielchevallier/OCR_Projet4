@@ -27,4 +27,24 @@ Class MessageManager extends AbstractEntityManager {
         }
         return $messages;
     }
+
+
+    public function countUnreadMessage(int $user_id){
+        $sql = "SELECT COUNT(*) AS unread_count
+                FROM messages m
+                JOIN chat_users cu ON cu.chat_id = m.chat_id
+                WHERE cu.user_id = :user_id
+                AND m.author_id != :user_id
+                AND (
+                    cu.last_read_at IS NULL
+                    OR m.created_at > cu.last_read_at
+                )";
+        $result = $this->db->query($sql, [
+                    'user_id' => $user_id
+                ]);
+        $countMessage=$result->fetch();
+        return $countMessage['unread_count'];
+    }
+
+   
 }

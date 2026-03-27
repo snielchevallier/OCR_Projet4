@@ -7,7 +7,7 @@ Class ChatManager extends AbstractEntityManager {
 
     public function createChat(Chat $chat){
         //Ajoute le chat
-        $sql="INSERT INTO chats (created_at) VALUES (NOW())";
+        $sql="INSERT INTO chats (created_at,updated_at) VALUES (NOW(),NOW())";
         $result = $this->db->query($sql);
         $chat->setId((int) $this->db->lastInsertId());
 

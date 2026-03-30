@@ -73,7 +73,7 @@ switch ($uri) {
 		$chatController->sendMessage();
 		break;
 	default:
-		// Page d'accueil ou 404
-		echo 'Page non trouvée';
+		$view = new View("Erreur");
+        $view->render("erreur",);
 		break;
 }

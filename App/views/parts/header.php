@@ -3,10 +3,10 @@
             <nav class="relative max-w-6xl mx-auto px-4 py-4 flex items-center">
                 
                 <a href="/">
-                    <img src="./assets/img/logo.svg" alt="Tom Troc" class="h-10">
+                    <img src="<?= ASSETS_PATH?>img/logo.svg" alt="Tom Troc" class="h-10">
                 </a>
                 <button id="menu-btn" class="md:hidden ml-auto">
-                    <img src="./assets/img/icon-menu.svg" alt="Menu" class="h-6">
+                    <img src="<?= ASSETS_PATH?>img/icon-menu.svg" alt="Menu" class="h-6">
                 </button>
                 <!-- Menu -->
                 <ul id="menu"
@@ -24,11 +24,11 @@
                     </li>
                     <?php if (Utils::isConnected()): ?>
                     <li class="md:ml-auto flex items-center gap-2">
-                        <img src="./assets/img/icon-message.svg" alt="" class="h-5">
+                        <img src="<?= ASSETS_PATH?>img/icon-message.svg" alt="" class="h-5">
                         <a href="/messagerie" class="block py-2 <?php if($rubrique==='chat'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2"><?=$nbUnreadMessages?></span></a>
                     </li>
                     <li class="flex items-center gap-2">
-                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="/account" class="block py-2 <?php if($rubrique==='account'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Mon compte</a>
+                        <img src="<?= ASSETS_PATH?>img/icon-account.svg" alt="" class="h-5"><a href="/account" class="block py-2 <?php if($rubrique==='account'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Mon compte</a>
                     </li>
                     <li>
                         <a href="/disconnect" class="block py-2 hover:text-tomTroc-green">Déconnexion</a>

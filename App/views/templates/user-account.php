@@ -12,7 +12,7 @@
                             <?php if ($user->getPhoto()): ?>
                                <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full">
                             <?php else: ?>
-                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-32 h-32 rounded-full">
+                                <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-32 h-32 rounded-full">
                             <?php endif; ?>
                             <label for="photo" class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter cursor-pointer hover:underline">
                                 modifier
@@ -22,7 +22,7 @@
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter">
-                                <img src="assets/img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres
+                                <img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres
                             </p>
                            
                         </div>
@@ -119,7 +119,7 @@
                                 <?php if ($book->getCover()): ?>
                                     <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 ">
                                 <?php else: ?>
-                                    <img src="<?= ASSETS_PATH ?>/img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                    <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
                                 <?php endif; ?>
                             </div>
                             <div class="order-2 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getTitle())?></div>

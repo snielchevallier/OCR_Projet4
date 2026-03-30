@@ -61,7 +61,7 @@
                             </p>
                         </div>
                         <div class="">
-                            <img src="assets/img/img-users.png" class="w-full">
+                            <img src="<?= ASSETS_PATH?>img/img-users.png" class="w-full">
                         </div>
                     </div>
                 </div>

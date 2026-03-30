@@ -21,12 +21,12 @@
                                     <?php if ($owner->getPhoto()): ?>
                                     <img src="<?= UPLOADS_URL ?>users/<?=$owner->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
                                     <?php else: ?>
-                                        <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
+                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
                                     <?php endif; ?>
                                     <span class="text-inter text-base text-tomTroc-darkgrey"><?= htmlspecialchars($owner->getPseudo()) ?></span>
                                 </div>
                             </a>
-                            <?php if(!($_SESSION["idUser"]===$owner->getId())):?>
+                            <?php if(isset($_SESSION["idUser"])&&!($_SESSION["idUser"]===$owner->getId())):?>
                             <a href="/messagerie?dest=<?=$owner->getId()?>" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full text-center">
                                 Envoyer un message
                             </a>

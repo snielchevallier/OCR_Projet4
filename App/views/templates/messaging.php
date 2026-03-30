@@ -15,7 +15,7 @@
                                         <?php if(!empty($chat['dest_user_photo'])): ?>
                                     <img src="<?= UPLOADS_URL ?>users/<?=$chat['dest_user_photo']?>" class="w-12 h-12 rounded-full rowspan-2">
                                     <?php else: ?>
-                                        <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
+                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
                                     <?php endif; ?>
                                     </div>
                                     <div class="col-span-4 ps-2">

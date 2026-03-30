@@ -15,7 +15,7 @@
                                         <?php if(!empty($chat['dest_user_photo'])): ?>
                                     <img src="<?= UPLOADS_URL ?>users/<?=$chat['dest_user_photo']?>" class="w-12 h-12 rounded-full rowspan-2">
                                     <?php else: ?>
-                                        <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
+                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
                                     <?php endif; ?>
                                     </div>
                                     <div class="col-span-4 ps-2">
@@ -39,7 +39,7 @@
                             <?php if ($user_dest->getPhoto()): ?>
                                <img src="<?= UPLOADS_URL ?>users/<?=$user_dest->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
                             <?php else: ?>
-                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
+                                <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
                             <?php endif; ?>
                             <span class="text-inter text-base font-semibold text-tomTroc-darkgrey whitespace-nowrap">
                                 <?=$user_dest->getPseudo();?>
@@ -56,7 +56,7 @@
                                                 <?php if ($user_dest->getPhoto()): ?>
                                                     <img src="<?= UPLOADS_URL ?>users/<?=$user_dest->getPhoto()?>" class="w-5 h-5 rounded-full object-cover"> 
                                                 <?php else: ?>
-                                                    <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-5 h-5 rounded-full object-cover"> 
+                                                    <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-5 h-5 rounded-full object-cover"> 
                                                 
                                                 <?php endif; ?>
                                                 <?=$message->getCreatedAt()->format('d.m H:i')?>

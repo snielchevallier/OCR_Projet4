@@ -5,7 +5,7 @@
                     <li><a href="#" class="text-sm text-gray-600 hover:text-black">Politique de confidentialité</a></li>
                     <li><a href="#" class="text-sm text-gray-600 hover:text-black">Mentions légales</a></li>
                     <li>Tom Troc©</li>
-                    <li><img src="./assets/img/logo-footer.svg" alt="Logo footer" class="w-6 h-6"></li>
+                    <li><img src="<?= ASSETS_PATH?>img/logo-footer.svg" alt="Logo footer" class="w-6 h-6"></li>
                 </ul>
             </div>
         </footer>

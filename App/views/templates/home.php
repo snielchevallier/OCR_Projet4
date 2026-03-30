@@ -15,7 +15,7 @@
                         </a>
                     </div>
                     <div class="order-1 md:order-2 md:w-1/2">
-                        <img src="./assets/img/hamza-nouasria-KXrvPthkmYQ-unsplash 1@2x.png" alt="Description image" class="w-full">
+                        <img src="<?= ASSETS_PATH?>img/hamza-nouasria-KXrvPthkmYQ-unsplash 1@2x.png" alt="Description image" class="w-full">
                         <capture class="text-right block mt-1 mr-8 font-inter italic text-tomTroc-grey">Hamza</capture>
                     </div>
 
@@ -85,10 +85,10 @@
             <!--BLOCK BANDEAU IMAGE-->
             <section>
                 <div class="flex items-center md:block">
-                    <img src="./assets/img/bandeau.png" aria-label="" alt="Logo de Tom Troc" class="mx-auto">
+                    <img src="<?= ASSETS_PATH?>img/bandeau.png" aria-label="" alt="" class="mx-auto">
                 </div>
                 <div class="flex items-center md:hidden">
-                    <img src="./assets/img/bandeau-mob.png" aria-label="" alt="Logo de Tom Troc" class="mx-auto">
+                    <img src="<?= ASSETS_PATH?>img/bandeau-mob.png" aria-label="" alt="" class="mx-auto">
                 </div>
             </section>
             <!--BLOCK NOS VALEURS-->
@@ -113,7 +113,7 @@
                     </p>
                     </div>
                     <div class="md:mr-0">
-                        <img src="./assets/img/coeur.svg" aria-label="" alt="Coeur" class="mx-auto md:mr-auto">
+                        <img src="<?= ASSETS_PATH?>img/coeur.svg" aria-label="" alt="Coeur" class="mx-auto md:mr-auto">
                     </div>
                 </div>
             </section>

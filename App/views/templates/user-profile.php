@@ -7,14 +7,14 @@
                             <?php if ($user->getPhoto()): ?>
                                <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full">
                             <?php else: ?>
-                                <img src="<?= ASSETS_PATH ?>/img/icon-profile-default" class="w-32 h-32 rounded-full">
+                                <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-32 h-32 rounded-full">
                             <?php endif; ?>
                             <p class="pt-5 "><hr class="pt-5 px-24"></p>
                             <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></p>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
-                            <p class="pb-5 flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres</p>
-                            <?php if(!($_SESSION["idUser"]===$user->getId())):?>
+                            <p class="pb-5 flex items-center text-tomTroc-darkgrey font-inter"><img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres</p>
+                            <?php if(isset($_SESSION["idUser"])&&!($_SESSION["idUser"]===$user->getId())):?>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter">
                                 <a href="/messagerie?dest=<?=$user->getId()?>" class="w-full bg-tomTroc-bg text-tomTroc-green border-solid border-2 border-tomTroc-green font-inter font-semibold px-6 py-3 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition" >
                                     Écrire un message
@@ -41,7 +41,7 @@
                                         <?php if ($book->getCover()): ?>
                                             <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 ">
                                         <?php else: ?>
-                                            <img src="<?= ASSETS_PATH ?>/img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                            <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
                                         <?php endif; ?>
                                     </div>
                                     <div class="order-2 font-inter text-sm md:px-2"><?=htmlspecialchars($book->getTitle())?></div>

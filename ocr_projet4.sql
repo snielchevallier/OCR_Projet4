@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 24 mars 2026 à 17:28
+-- Généré le : ven. 27 mars 2026 à 18:26
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -74,7 +74,20 @@ CREATE TABLE IF NOT EXISTS `chats` (
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `chats`
+--
+
+INSERT INTO `chats` (`id`, `created_at`, `updated_at`) VALUES
+(1, '2026-03-24 22:41:24', '2026-03-24 22:41:24'),
+(2, '2026-03-25 11:04:52', '2026-03-25 11:04:52'),
+(3, '2026-03-25 11:05:25', '2026-03-25 11:05:25'),
+(4, '2026-03-25 11:06:08', '2026-03-25 11:06:08'),
+(5, '2026-03-25 11:12:14', '2026-03-25 11:12:14'),
+(6, '2026-03-25 11:24:41', '2026-03-25 11:24:41'),
+(7, '2026-03-26 10:48:42', '2026-03-26 10:48:42');
 
 -- --------------------------------------------------------
 
@@ -91,7 +104,17 @@ CREATE TABLE IF NOT EXISTS `chat_users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `chat_id` (`chat_id`,`user_id`),
   KEY `chat_users_ibfk_2` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `chat_users`
+--
+
+INSERT INTO `chat_users` (`id`, `chat_id`, `user_id`, `last_read_at`) VALUES
+(1, 6, 2, '2026-03-27 17:47:56'),
+(2, 6, 3, '2026-03-27 16:44:34'),
+(3, 7, 4, '2026-03-27 19:25:28'),
+(4, 7, 2, '2026-03-27 19:25:42');
 
 -- --------------------------------------------------------
 
@@ -106,11 +129,31 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `author_id` int UNSIGNED DEFAULT NULL,
   `content` text COLLATE utf8mb4_unicode_ci,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `viewed_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `chat_id` (`chat_id`),
   KEY `author_id` (`author_id`),
   KEY `chat_id_2` (`chat_id`,`created_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `chat_id`, `author_id`, `content`, `created_at`, `viewed_at`) VALUES
+(1, 6, 2, 'salut', '2026-03-25 17:05:16', NULL),
+(2, 6, 2, 'salut', '2026-03-25 17:06:46', NULL),
+(3, 6, 2, 'salut?', '2026-03-25 17:08:12', NULL),
+(4, 6, 3, 'ça va?', '2026-03-25 18:39:42', '2026-03-27 12:12:05'),
+(5, 6, 2, 'oui et toi?', '2026-03-25 18:40:16', NULL),
+(6, 6, 3, 'ça va bien', '2026-03-25 18:40:35', '2026-03-27 12:12:06'),
+(7, 7, 4, 'salut je suis le user 3', '2026-03-26 10:48:42', NULL),
+(8, 7, 4, 'salut', '2026-03-26 18:34:46', NULL),
+(9, 7, 2, 'ça va?', '2026-03-26 18:35:00', NULL),
+(10, 7, 4, 'oui et toi?', '2026-03-27 16:43:48', NULL),
+(11, 6, 3, 'yes', '2026-03-27 16:44:34', NULL),
+(12, 7, 2, 'ça va, merci', '2026-03-27 18:04:47', NULL),
+(13, 7, 4, 'et sinon?', '2026-03-27 19:25:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +183,7 @@ INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `photo`, `created_at`,
 (1, 'admin', 'admin@tomtroc.com', '$2y$10$0THelWUCqSuKPdLF67YrBeLZhJDtYOyBuSxvPub31CiSmpaP8k9XW', '', '2026-03-02 18:14:10', NULL),
 (2, 'user1', 'user1@tomtroc.com', '$2y$10$4iu5H67jIMjhAGIwuxhM2uELrL3Lt1r7FpBKnWN8UaAkzFyu7c/.C', '', '2026-03-02 18:14:10', NULL),
 (3, 'user2', 'user2@tomtroc.com', '$2y$10$J.Yi0W7YL1m6YLOYTI/RUOAuQtk88JUNVuNQZiDn.zXgIRIfX/2bi', '', '2025-01-02 18:14:10', '2026-03-10 18:29:26'),
-(4, 'user3', 'user3@tomtroc.com', '$2y$10$xsVdbr41UZDBlEhPHfJfO.muXlBU2dTbOO7ccNB6aIyUAKTbWU5aW', '', '2026-03-02 18:14:10', NULL),
+(4, 'user3', 'user3@tomtroc.com', '$2y$10$xsVdbr41UZDBlEhPHfJfO.muXlBU2dTbOO7ccNB6aIyUAKTbWU5aW', '69c50b3613ed7.jpg', '2026-03-02 18:14:10', '2026-03-26 11:32:22'),
 (5, 'user4', 'user4@tomtroc.com', '$2y$10$hCj/QJuamDAKVPQ9KDPALOkjqqjlBBDS3g4MwG2uaDhHf/iTU9NwG', '', '2026-03-02 18:14:10', NULL),
 (6, 'user5', 'user5@tomtroc.com', '$2y$10$3AKHjNLmSBXehsB75J2Ak.8e3wAuwj/fH.dtmUkYHqx5SoBb8Urjm', '', '2026-03-02 18:14:10', NULL),
 (12, 'sylvain', 'snielchevallier@gmail.com', '$2y$10$hzFKiI5CtgOOqKdBZKN0GeVx4xBWRJHC.g/lasQ0C7fmfOqThJ.Fe', '69b43ef01e820.jpg', '2026-03-12 15:16:44', '2026-03-13 18:49:44'),

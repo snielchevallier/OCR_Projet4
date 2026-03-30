@@ -64,6 +64,14 @@ switch ($uri) {
 		$bookController = new BookController();
 		$bookController->deleteBook();
 		break;
+	case 'messagerie':
+		$chatController = new ChatController();
+		$chatController->showChat();
+		break;
+	case 'sendMessage':
+		$chatController = new ChatController();
+		$chatController->sendMessage();
+		break;
 	default:
 		// Page d'accueil ou 404
 		echo 'Page non trouvée';

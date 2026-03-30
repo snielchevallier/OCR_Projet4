@@ -11,9 +11,9 @@
                             <form class="w-full md:w-auto">   
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none">
-                                        <img src="<?= ASSETS_PATH?>img/icon-search.svg" class="w-5 h-5">
+                                        <img src="<?= ASSETS_PATH?>img/icon-search.svg" class="w-5 h-5" alt="">
                                     </div>
-                                    <input type="search" id="search" name="search" value="<?= Utils::request('search')?>" class="block w-full md:w-80 p-4 ps-10 text-sm text-gray-900 border border-tomTroc-lightgrey rounded-lg bg-white italic" placeholder="Rechercher un livre" />
+                                    <input type="search" id="search" name="search" value="<?= Utils::request('search')?>" class="block w-full md:w-80 p-4 ps-10 text-sm text-gray-900 border border-tomTroc-lightgrey rounded-lg bg-white italic" placeholder="Rechercher un livre">
                                 </div>
                             </form>
                         </div>

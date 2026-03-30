@@ -14,10 +14,10 @@
                             Découvrir
                         </a>
                     </div>
-                    <div class="order-1 md:order-2 md:w-1/2">
-                        <img src="<?= ASSETS_PATH?>img/hamza-nouasria-KXrvPthkmYQ-unsplash 1@2x.png" alt="Description image" class="w-full">
-                        <capture class="text-right block mt-1 mr-8 font-inter italic text-tomTroc-grey">Hamza</capture>
-                    </div>
+                    <figure class="order-1 md:order-2 md:w-1/2">
+                        <img src="<?= ASSETS_PATH?>img/hamza-nouasria.png" alt="Description image" class="w-full">
+                        <figcaption class="text-right block mt-1 mr-8 font-inter italic text-tomTroc-grey">Hamza</figcaption>
+                    </figure>
 
                 </div>
             </section>

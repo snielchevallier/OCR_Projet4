@@ -21,7 +21,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 pb-10">
                          <div class="bg-white pt-6 px-5 flex flex-col items-center rounded-t-lg md:rounded-t-none md:rounded-l-lg md:ps-12 md:pe-18">
                             <p class="self-start block text-sm font-inter mb-2 text-tomTroc-grey">Photo</p>
-                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full">
+                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full" alt="<?= $book->getTitle() ?>">
                             <label for="cover" class="self-end underline pt-2 pb-5 text-tomTroc-darkgrey text-sm font-inter cursor-pointer hover:underline">
                                 modifier la photo
                             </label>

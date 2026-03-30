@@ -3,7 +3,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         
                         <div class="">
-                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full">
+                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full" alt="<?= $book->getTitle() ?>">
                         </div>
                          <div class="bg-tomTroc-light py-12 px-5 md:ps-16 md:pe-20">
                             <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
@@ -19,9 +19,9 @@
                             <a href="/profil?id=<?=$owner->getId()?>">
                                 <div class="inline-flex  items-center gap-3 px-3 py-1.5 bg-white rounded-full shadow-sm">
                                     <?php if ($owner->getPhoto()): ?>
-                                    <img src="<?= UPLOADS_URL ?>users/<?=$owner->getPhoto()?>" class="w-12 h-12 rounded-full object-cover">
+                                    <img src="<?= UPLOADS_URL ?>users/<?=$owner->getPhoto()?>" class="w-12 h-12 rounded-full object-cover" alt="<?=$owner->getPseudo()?>">
                                     <?php else: ?>
-                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full object-cover">
+                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full object-cover" alt="<?=$owner->getPseudo()?>">
                                     <?php endif; ?>
                                     <span class="text-inter text-base text-tomTroc-darkgrey"><?= htmlspecialchars($owner->getPseudo()) ?></span>
                                 </div>

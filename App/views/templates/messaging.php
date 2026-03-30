@@ -13,10 +13,10 @@
                                 <div class="border-solid border-b-2 border-white grid grid-cols-5 py-2 px-5 items-center w-full md:max-w-80">
                                     <div class="col-span-1">
                                         <?php if(!empty($chat['dest_user_photo'])): ?>
-                                    <img src="<?= UPLOADS_URL ?>users/<?=$chat['dest_user_photo']?>" class="w-12 h-12 rounded-full rowspan-2">
-                                    <?php else: ?>
-                                        <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2">
-                                    <?php endif; ?>
+                                            <img src="<?= UPLOADS_URL ?>users/<?=$chat['dest_user_photo']?>" class="w-12 h-12 rounded-full rowspan-2" alt="<?=$chat['dest_user_pseudo']?>">
+                                        <?php else: ?>
+                                            <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-12 h-12 rounded-full rowspan-2" alt="<?=$chat['dest_user_pseudo']?>">
+                                        <?php endif; ?>
                                     </div>
                                     <div class="col-span-4 ps-2">
                                         <p class="font-inter text-sm text-tomTroc-darkgrey flex justify-between">

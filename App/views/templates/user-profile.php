@@ -14,11 +14,13 @@
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
                             <p class="pb-5 flex items-center text-tomTroc-darkgrey font-inter"><img src="assets/img/icon-biblio.svg" class="w-4 h-4"><?=count($books)?> livres</p>
+                            <?php if(!($_SESSION["idUser"]===$user->getId())):?>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter">
-                                <a href="#" class="w-full bg-tomTroc-bg text-tomTroc-green border-solid border-2 border-tomTroc-green font-inter font-semibold px-6 py-3 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition" >
+                                <a href="/messagerie?dest=<?=$user->getId()?>" class="w-full bg-tomTroc-bg text-tomTroc-green border-solid border-2 border-tomTroc-green font-inter font-semibold px-6 py-3 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition" >
                                     Écrire un message
                                 </a>
                             </p>
+                            <?php endif;?>
                         </div>
                         <div class="rounded-lg py-5 md:py-0 px-0">
                             <div class="gap-2 pb-10 rounded-lg space-y-6 md:space-y-0">
@@ -33,7 +35,7 @@
                                 $i = 0;
                                 foreach ($books as $book):     
                                 ?>
-                                <a href="/detail-livre?id=<?=$book->getId()?>">
+                                <a href="/livres/detail-livre?id=<?=$book->getId()?>">
                                 <div class="bg-white <?= $i%2 === 1 ? ' md:bg-tomTroc-blue' : '' ?> grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr] p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
                                     <div class="order-1 row-span-2">
                                         <?php if ($book->getCover()): ?>

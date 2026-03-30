@@ -132,7 +132,7 @@
                                 <span class="bg-tomTroc-lightred py-1 px-2 rounded-full text-white">non dispo.</span>
                             <?php endif; ?>
                             </div>
-                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="/editer-livre?id=<?=$book->getId()?>" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
+                            <div class="order-6 font-inter pt-10 md:pt-0 md:px-2"><a href="/account/editer-livre?id=<?=$book->getId()?>" class="font-inter text-tomTroc-darkgrey text-base">Éditer</a></div>
                             <div class="order-7 font-inter pt-10 md:pt-0 md:px-2"><a href="/supprimer-livre?id=<?=$book->getId()?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?');" class="font-inter text-base text-tomTroc-red">supprimer</a></div>
                         </div>
                         <?php 

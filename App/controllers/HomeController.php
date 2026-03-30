@@ -9,7 +9,7 @@ final class HomeController
         $bookManager = new BookManager();
         $books = $bookManager->getNBooks(4);
 
-        $view = new View("Accueil");
+        $view = new View("Accueil","home");
         $view->render("home", ['books' => $books]);
     }
 }

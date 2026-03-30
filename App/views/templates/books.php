@@ -25,7 +25,7 @@
                             </div>
                         <?php else:?>
                             <?php foreach ($books as $book): ?>
-                                <a href="/detail-livre?id=<?=$book->getId() ?>">
+                                <a href="/livres/detail-livre?id=<?=$book->getId() ?>">
                                 <div class="bg-white rounded-b-lg w-40 md:w-52">
                                     <div class="bg-no-repeat bg-cover w-full aspect-square" style="background-image: url('<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>');">
                                     </div>

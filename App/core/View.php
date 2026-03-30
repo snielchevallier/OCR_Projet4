@@ -5,18 +5,15 @@
  */
 class View 
 {
-    /**
-     * Le titre de la page.
-     */
     private string $title;
+    private string $rubrique;
     
     
-    /**
-     * Constructeur. 
-     */
-    public function __construct($title) 
+
+    public function __construct($title, $rubrique) 
     {
         $this->title = $title;
+        $this->rubrique = $rubrique;
     }
     
     /**
@@ -33,6 +30,7 @@ class View
         // Les variables ci-dessous sont utilisées dans le "main.php" qui est le template principal.
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
+        $rubrique = $this->rubrique;
         if(Utils::isConnected()){
             $messageManager = new MessageManager();
             $nbUnreadMessages = $messageManager->countUnreadMessage(intval($_SESSION['idUser']));

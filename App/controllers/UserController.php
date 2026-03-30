@@ -6,13 +6,13 @@ class UserController{
 
     public function registerUser(): void{
         
-        $view = new View("Inscription");
+        $view = new View("Inscription","connexion");
         $view->render("register");
     }
 
     public function connexionUser(): void{
         
-        $view = new View("Connexion");
+        $view = new View("Connexion","connexion");
         $view->render("connexion");
     }
     
@@ -108,7 +108,7 @@ class UserController{
         if(isset($user)){
             $bookManager = new BookManager();
             $books=$bookManager->getBooksByOwner(intval($idUser));
-            $view = new View("profile");
+            $view = new View("profile","livres");
             $view->render("user-profile", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");
@@ -124,7 +124,7 @@ class UserController{
         $bookManager = new BookManager();
         $books=$bookManager->getBooksByOwner(intval($idUser));
         if(isset($user)){
-            $view = new View("account");
+            $view = new View("account","account");
             $view->render("user-account", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");

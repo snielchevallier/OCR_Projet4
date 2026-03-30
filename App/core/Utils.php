@@ -60,4 +60,16 @@ class Utils {
         return $result ? implode(' ', $result) : 'moins d’un mois';
     }
 
+
+    /**
+     * teste si le paramètre est présent dans l'url
+     * @param string $rubrique : la rubrique à tester
+     * 
+     * @return bool
+     */
+    public static function isNavActive(string $rubrique): bool{
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        return str_starts_with($uri, "/".$rubrique);
+    } 
+
 }

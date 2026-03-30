@@ -17,18 +17,18 @@
                         md:flex-1 md:ml-8">
 
                     <li>
-                        <a href="/" class="block py-2 font-semibold hover:text-tomTroc-green">Accueil</a>
+                        <a href="/" class="block py-2 <?php if($rubrique==='home'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Accueil</a>
                     </li>
                     <li>
-                        <a href="/nos-livres" class="block py-2 hover:text-tomTroc-green">Nos livres à l'échange</a>
+                        <a href="/livres/nos-livres-a-l-echange" class="block py-2 <?php if($rubrique==='livres'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Nos livres à l'échange</a>
                     </li>
                     <?php if (Utils::isConnected()): ?>
                     <li class="md:ml-auto flex items-center gap-2">
                         <img src="./assets/img/icon-message.svg" alt="" class="h-5">
-                        <a href="/messagerie" class="block py-2 hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2"><?=$nbUnreadMessages?></span></a>
+                        <a href="/messagerie" class="block py-2 <?php if($rubrique==='chat'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Messagerie <span class="bg-black text-white rounded-full text-xs px-1 py-1 mx-2"><?=$nbUnreadMessages?></span></a>
                     </li>
                     <li class="flex items-center gap-2">
-                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="/account" class="block py-2 hover:text-tomTroc-green">Mon compte</a>
+                        <img src="./assets/img/icon-account.svg" alt="" class="h-5"><a href="/account" class="block py-2 <?php if($rubrique==='account'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Mon compte</a>
                     </li>
                     <li>
                         <a href="/disconnect" class="block py-2 hover:text-tomTroc-green">Déconnexion</a>
@@ -38,7 +38,7 @@
                         <?php if (Utils::isConnected()): ?>
                         <a href="/disconnect" class="block py-2 hover:text-tomTroc-green">Déconnexion</a>
                         <?php else: ?>
-                        <a href="/connexion" class="block py-2 hover:text-tomTroc-green">Connexion</a>
+                        <a href="/connexion" class="block py-2 <?php if($rubrique==='connexion'):?>font-semibold<?php endif;?> hover:text-tomTroc-green">Connexion</a>
                         <?php endif; ?>
                     </li>
                      <?php endif; ?>

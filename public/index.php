@@ -6,74 +6,75 @@ require_once __DIR__ . '/../config/autoload.php';
 
 // ROUTEUR
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = trim($uri, '/');
+//$uri = trim($uri, '/');
 switch ($uri) {
-    case '':
+    case '/':
         $homeController = new HomeController();
         $homeController->home();
         break;
-	case 'nos-livres':
+	case '/livres/nos-livres-a-l-echange':
+		$rubrique="livres";
 		$bookController = new BookController();
 		$bookController->listBooks();
 		break;
-	case 'detail-livre':
+	case '/livres/detail-livre':
 		$bookController = new BookController();
 		$bookController->detailBook();
 		break;
-	case 'connexion':
+	case '/connexion':
 		$userController = new UserController();
 		$userController->connexionUser();
 		break;
-	case 'connect':
+	case '/connect':
 		$userController = new UserController();
 		$userController->connectUser();
 		break;
-	case 'disconnect':
+	case '/disconnect':
 		$userController = new UserController();
 		$userController->disconnectUser();
 		break;
-	case 'inscription':
+	case '/inscription':
 		$userController = new UserController();
 		$userController->registerUser();
 		break;
-	case 'addUser':
+	case '/addUser':
 		$userController = new UserController();
 		$userController->addUser();
 		break;
-	case 'updateUser':
+	case '/updateUser':
 		$userController = new UserController();
 		$userController->updateUser();
 		break;	
-	case 'profil':
+	case '/profil':
 		$userController = new UserController();
 		$userController->profileUser();
 		break;
-	case 'account':
+	case '/account':
 		$userController = new UserController();
 		$userController->accountUser();
 		break;
-	case 'editer-livre':
+	case '/account/editer-livre':
 		$bookController = new BookController();
 		$bookController->editBook();
 		break;
-	case 'update-book':
+	case '/update-book':
 		$bookController = new BookController();
 		$bookController->updateBook();
 		break;
-	case 'supprimer-livre':
+	case '/supprimer-livre':
 		$bookController = new BookController();
 		$bookController->deleteBook();
 		break;
-	case 'messagerie':
+	case '/messagerie':
 		$chatController = new ChatController();
 		$chatController->showChat();
 		break;
-	case 'sendMessage':
+	case '/sendMessage':
 		$chatController = new ChatController();
 		$chatController->sendMessage();
 		break;
 	default:
-		$view = new View("Erreur");
+		$view = new View("Erreur","erreur");
         $view->render("erreur",);
 		break;
 }

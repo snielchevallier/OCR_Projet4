@@ -37,15 +37,15 @@ class ChatController{
                     }else{
                         $messages=[];
                     }
-                    $view = new View("Messagerie");
+                    $view = new View("Messagerie","chat");
                     $view->render("chat",['user_dest' => $dest_user,'messages'=>$messages,'chats'=>$chats]);
                 }else{
-                    $view = new View("Messagerie");
+                    $view = new View("Messagerie","chat");
                     $view->render("messaging",['chats'=>$chats]);
                 }
             }else{
                 //si pas de destinataire, affiche la liste des chat sans la partie message
-                $view = new View("Messagerie");
+                $view = new View("Messagerie","chat");
                 $view->render("messaging",['chats'=>$chats]);
             }
             

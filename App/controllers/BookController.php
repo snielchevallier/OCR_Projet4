@@ -13,7 +13,7 @@ class BookController{
             $books = $bookManager->getAllBooks();
         }
         
-        $view = new View("Liste des livres");
+        $view = new View("Liste des livres","livres");
         $view->render("books", ['books' => $books]);
     }
 
@@ -25,7 +25,7 @@ class BookController{
         $userManager = new UserManager();
         $owner = $userManager->getUserById($book->getOwner_id());
 
-        $view = new View("détail du livre: ".htmlspecialchars($book->getTitle()));
+        $view = new View("détail du livre: ".htmlspecialchars($book->getTitle()),"livres");
         $view->render("book-detail", ['book' => $book, 'owner' => $owner]);
         }else{
             Utils::redirect("nos-livres");
@@ -38,7 +38,7 @@ class BookController{
             $idBook=Utils::request('id', -1);
             $book = $bookManager->getBookById(intval($idBook));
         
-            $view = new View("Modification du livre: ".htmlspecialchars($book->getTitle()));
+            $view = new View("Modification du livre: ".htmlspecialchars($book->getTitle()),"account");
             $view->render("book-edit", ['book' => $book]);
         }else{
             Utils::redirect("connexion");
@@ -57,9 +57,6 @@ class BookController{
             $description = Utils::request("description");
             $status = Utils::request("status");
             $cover = Utils::requestFile("cover");
-
-            var_dump($_REQUEST);
-            var_dump($_FILES);
 
             try{
                 //récupère un Book à partir de l'id passé en paramètre
@@ -105,10 +102,10 @@ class BookController{
                 $bookManager->updateBook($book);
             } catch (Exception $e) {
                 
-                Utils::redirect("editer-livre",['id'=>$idBook, 'errorMessage' => $e->getMessage()]);
+                Utils::redirect("/account/editer-livre",['id'=>$idBook, 'errorMessage' => $e->getMessage()]);
             }
 
-            Utils::redirect("editer-livre",['id'=>$idBook, 'message' => "modification effectuée."]);
+            Utils::redirect("/account/editer-livre",['id'=>$idBook, 'message' => "modification effectuée."]);
         }else{
             Utils::redirect("connexion");
         }

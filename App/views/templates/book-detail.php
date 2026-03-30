@@ -26,9 +26,11 @@
                                     <span class="text-inter text-base text-tomTroc-darkgrey"><?= htmlspecialchars($owner->getPseudo()) ?></span>
                                 </div>
                             </a>
+                            <?php if(!($_SESSION["idUser"]===$owner->getId())):?>
                             <a href="/messagerie?dest=<?=$owner->getId()?>" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full text-center">
                                 Envoyer un message
                             </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,7 @@
                             Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.
                         </p>
 
-                        <a href="#" class="inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full md:w-auto text-center">
+                        <a href="/livres/nos-livres-a-l-echange" class="inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full md:w-auto text-center">
                             Découvrir
                         </a>
                     </div>
@@ -29,7 +29,7 @@
                     </h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
                          <?php foreach ($books as $book): ?>
-                            <a href="/detail-livre?id=<?=$book->getId() ?>" class="">
+                            <a href="/livres/detail-livre?id=<?=$book->getId() ?>" class="">
                             <div class="bg-white rounded-b-lg w-40 md:w-52 flex flex-col h-full">
                                 <div class="bg-no-repeat bg-cover w-full aspect-square" style="background-image: url('<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>');">
                                 </div>
@@ -41,7 +41,7 @@
                         <?php endforeach; ?>
                        
                     </div>
-                    <a href="/nos-livres" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full md:w-auto text-center">
+                    <a href="/livres/nos-livres-a-l-echange" class="my-6 inline-block bg-tomTroc-green text-white font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen transition-colors transition-duration-1000 w-full md:w-auto text-center">
                         Voir tous les livres
                     </a>
                 </div>
@@ -77,7 +77,7 @@
                             </p>
                         </div>
                     </div>
-                    <a href="/nos-livres" class="my-6 inline-block bg-tomTroc-bg border-solid border border-tomTroc-green text-tomTroc-green font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition-colors transition-duration-1000 w-full md:w-auto text-center">
+                    <a href="/livres/nos-livres-a-l-echange" class="my-6 inline-block bg-tomTroc-bg border-solid border border-tomTroc-green text-tomTroc-green font-inter font-semibold px-6 py-4 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition-colors transition-duration-1000 w-full md:w-auto text-center">
                         Voir tous les livres
                     </a>
                 </div>

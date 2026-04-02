@@ -3,9 +3,9 @@
                 <div class="pt-4 pb-0 max-w-full">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                          <div class="bg-tomTroc-light py-12 px-5  md:ps-16 md:pe-20">
-                            <h2 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
+                            <h1 class="text-3xl font-playfairDisplay mb-6 md:mb-12 md:mt-4">
                                 Connexion
-                            </h2>
+                            </h1>
                             <?php if (Utils::request("errorMessage")): ?>
                             <p class="text-sm font-inter text-tomTroc-red text-center mb-6 md:mb-12">
                                 Connexion refusée, vérifiez votre email et/ou votre mot de passe.
@@ -17,6 +17,7 @@
                                         Adresse email
                                     </label>
                                     <input 
+                                        required
                                         type="email"
                                         name="email"
                                         id="email"
@@ -28,6 +29,7 @@
                                         Mot de passe
                                     </label>
                                     <input 
+                                        required
                                         type="password"
                                         name="password"
                                         id="password"
@@ -49,7 +51,7 @@
                             </p>
                         </div>
                         <div class="">
-                            <img src="<?= ASSETS_PATH?>img/img-users.png" class="w-full" alt="">
+                            <img src="<?= ASSETS_PATH?>img/img-users.jpg" class="w-full" alt="une bibliothèque remplie de livres">
                         </div>
                     </div>
                 </div>

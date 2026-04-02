@@ -27,7 +27,7 @@
                 </button>
                 <!-- Menu -->
                 <ul id="menu"
-                    class="hidden absolute top-16 left-0 w-full bg-white 
+                    class="z-50 hidden absolute top-16 left-0 w-full bg-white 
                         flex flex-col gap-4 p-6 text-sm font-inter
                         md:static md:flex md:flex-row md:items-center 
                         md:gap-8 md:p-0 md:bg-transparent 
@@ -70,6 +70,7 @@
                                     <div class="absolute inset-y-0 left-0 flex items-center ps-3 pointer-events-none">
                                         <img src="./assets/img/icon-search.svg" class="w-5 h-5">
                                     </div>
+                                    <label for="search" class="sr-only">Rechercher un livre</label>
                                     <input type="search" id="default-search" class="block w-full md:w-80 p-4 ps-10 text-sm text-gray-900 border border-tomTroc-lightgrey rounded-lg bg-white italic" placeholder="Rechercher un livre" required />
                                     
                                 </div>

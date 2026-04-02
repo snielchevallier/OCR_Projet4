@@ -1,18 +1,18 @@
  <!--BLOCK ACCOUNT-->
             <section class="bg-tomTroc-bg ">
                 <div class="mx-auto pt-4 pb-0 max-w-6xl">
-                    <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
+                    <h1 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
                         Mon compte
-                    </h2>
+                    </h1>
                 </div>
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pb-10">
                          <div class="bg-white py-12 px-5 flex flex-col items-center rounded-lg md:ps-16 md:pe-20">
                             
                             <?php if ($user->getPhoto()): ?>
-                               <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full" alt="">
+                               <img src="<?= UPLOADS_URL ?>users/<?=$user->getPhoto()?>" class="w-32 h-32 rounded-full" alt="photo de profil de <?=htmlspecialchars($user->getPseudo())?>" loading="lazy">
                             <?php else: ?>
-                                <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-32 h-32 rounded-full" alt="">
+                                <img src="<?= ASSETS_PATH ?>img/icon-profile-default" class="w-32 h-32 rounded-full" alt="photo de profil de <?=htmlspecialchars($user->getPseudo())?>" loading="lazy">
                             <?php endif; ?>
                             <label for="photo" class="pt-2 pb-5 text-tomTroc-grey text-sm font-inter cursor-pointer hover:underline">
                                 modifier
@@ -22,7 +22,7 @@
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter">
-                                <img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4" alt=""><?=count($books)?> livres
+                                <img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4" alt="" loading="lazy"><?=count($books)?> livres
                             </p>
                            
                         </div>
@@ -47,6 +47,7 @@
                                         Adresse email
                                     </label>
                                     <input 
+                                        required
                                         type="email"
                                         name="email"
                                         id="email"
@@ -59,6 +60,7 @@
                                         Mot de passe
                                     </label>
                                     <input 
+                                        required
                                         type="password"
                                         name="password"
                                         id="password"
@@ -71,6 +73,7 @@
                                         Pseudo
                                     </label>
                                     <input 
+                                        required
                                         type="text"
                                         name="pseudo"
                                         id="pseudo"
@@ -117,9 +120,9 @@
                         <div class="bg-white grid <?= $i%2 === 1 ? ' md:bg-tomTroc-blue' : '' ?> grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr_1fr_90px_90px] md:grid-cols-7 p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
                             <div class="order-1 row-span-3">
                                 <?php if ($book->getCover()): ?>
-                                    <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20">
+                                    <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20" loading="lazy">
                                 <?php else: ?>
-                                    <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                    <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square" loading="lazy">
                                 <?php endif; ?>
                             </div>
                             <div class="order-2 font-inter text-sm leading-3 md:px-2"><?=htmlspecialchars($book->getTitle())?></div>

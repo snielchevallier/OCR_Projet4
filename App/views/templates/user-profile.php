@@ -12,10 +12,10 @@
                             <div class="pt-5">
                                 <hr class="px-24">
                             </div>
-                            <p class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></p>
+                            <h1 class="pb-5 text-tomTroc-darkgrey font-playfairDisplay text-2xl"><?=$user->getPseudo()?></h1>
                             <p class="pb-5 text-tomTroc-grey text-sm font-inter">Membre depuis <?= UTILS::timeElapsed($user->getCreatedAt())?></p>
                             <p class="pb-2 text-tomTroc-darkgrey font-inter text-xs font-semibold">BIBLIOTHEQUE</p>
-                            <p class="pb-5 flex items-center text-tomTroc-darkgrey font-inter"><img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4" alt=""><?=count($books)?> livres</p>
+                            <p class="pb-5 flex items-center text-tomTroc-darkgrey font-inter"><img src="<?= ASSETS_PATH?>img/icon-biblio.svg" class="w-4 h-4" alt="" loading="lazy"><?=count($books)?> livres</p>
                             <?php if(isset($_SESSION["idUser"])&&!($_SESSION["idUser"]===$user->getId())):?>
                             <p class="flex items-center text-tomTroc-darkgrey font-inter">
                                 <a href="/messagerie?dest=<?=$user->getId()?>" class="w-full bg-tomTroc-bg text-tomTroc-green border-solid border-2 border-tomTroc-green font-inter font-semibold px-6 py-3 rounded-lg hover:bg-tomTroc-darkgreen hover:text-white transition" >
@@ -41,9 +41,9 @@
                                 <div class="bg-white <?= $i%2 === 1 ? ' md:bg-tomTroc-blue' : '' ?> grid grid-cols-2 grid-cols-[90px_1fr] md:grid-cols-[90px_1fr_1fr_2fr] p-14 md:ps-16 md:pe-20 md:py-5 justify-items-left items-center rounded-lg md:rounded-none">
                                     <div class="order-1 row-span-2">
                                         <?php if ($book->getCover()): ?>
-                                            <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 ">
+                                            <img src="<?= UPLOADS_URL ?>books/<?=$book->getCover()?>" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 " loading="lazy">
                                         <?php else: ?>
-                                            <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square">
+                                            <img src="<?= ASSETS_PATH ?>img/icon-book-default.png" alt="<?=htmlspecialchars($book->getTitle())?>" class="w-20 h-20 aspect-square" loading="lazy">
                                         <?php endif; ?>
                                     </div>
                                     <div class="order-2 font-inter text-sm md:px-2"><?=htmlspecialchars($book->getTitle())?></div>

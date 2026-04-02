@@ -3,9 +3,9 @@
                     <a href="/account" class="text-xs text-tomTroc-grey font-inter px-5 mb-6 md:mb-12 md:mt-4">
                         &larr; retour
                     </a>
-                    <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
+                    <h1 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 md:mt-4">
                         Modifier les informations
-                    </h2>
+                    </h1>
                 </div>
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <?php if (Utils::request("errorMessage")): ?>
@@ -21,7 +21,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 pb-10">
                          <div class="bg-white pt-6 px-5 flex flex-col items-center rounded-t-lg md:rounded-t-none md:rounded-l-lg md:ps-12 md:pe-18">
                             <p class="self-start block text-sm font-inter mb-2 text-tomTroc-grey">Photo</p>
-                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full" alt="<?= $book->getTitle() ?>">
+                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full" alt="<?= $book->getTitle() ?>" loading="lazy">
                             <label for="cover" class="self-end underline pt-2 pb-5 text-tomTroc-darkgrey text-sm font-inter cursor-pointer hover:underline">
                                 modifier la photo
                             </label>
@@ -36,6 +36,7 @@
                                         Titre
                                     </label>
                                     <input 
+                                        required
                                         type="text"
                                         name="titre"
                                         id="titre"
@@ -48,6 +49,7 @@
                                         Auteur
                                     </label>
                                     <input 
+                                        required
                                         type="text"
                                         name="author"
                                         id="author"

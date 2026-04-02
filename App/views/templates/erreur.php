@@ -1,8 +1,8 @@
   <section class="max-w-6xl mx-auto">
                 <div class="px-5 pt-8 pb-6 text-center">
-                    <h2 class="text-3xl font-playfairDisplay mb-6 text-center">
+                    <h1 class="text-3xl font-playfairDisplay mb-6 text-center">
                         Erreur 404
-                    </h2>
+                    </h1>
                     <p class="font-inter mb-6 text-center text-sm max-w-sm mx-auto">
                         Page non trouvée
                     </p>

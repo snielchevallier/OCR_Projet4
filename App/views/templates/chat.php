@@ -3,9 +3,9 @@
                 
                 <div class="mt-5 max-w-6xl mx-auto  flex ">
                     <div class="bg-tomTroc-light min-h-[550px] w-full md:w-80 hidden md:block">
-                        <h2 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 mt-4">
+                        <h1 class="text-3xl font-playfairDisplay px-5 mb-6 md:mb-12 mt-4">
                             Messagerie
-                        </h2>
+                        </h1>
                         <?php foreach ($chats as $chat): 
                             $messageHour = new DateTime($chat['last_message_date']);
                             ?>

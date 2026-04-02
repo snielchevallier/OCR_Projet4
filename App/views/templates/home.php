@@ -2,9 +2,9 @@
             <section class="pt-16 pb-8">
                 <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
                     <div class="order-2 md:order-1 md:w-1/2 px-5">
-                        <h2 class="text-3xl font-playfairDisplay mb-6">
+                        <h1 class="text-3xl font-playfairDisplay mb-6">
                             Rejoignez nos lecteurs passionnés
-                        </h2>
+                        </h1>
 
                         <p class="font-inter mb-6">
                             Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres.
@@ -15,7 +15,7 @@
                         </a>
                     </div>
                     <figure class="order-1 md:order-2 md:w-1/2">
-                        <img src="<?= ASSETS_PATH?>img/hamza-nouasria.png" alt="Description image" class="w-full">
+                        <img src="<?= ASSETS_PATH?>img/hamza-nouasria.jpg" alt="Un homme lit entouré de livres" class="w-full" loading="lazy">
                         <figcaption class="text-right block mt-1 mr-8 font-inter italic text-tomTroc-grey">Hamza</figcaption>
                     </figure>
 
@@ -29,13 +29,14 @@
                     </h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
                          <?php foreach ($books as $book): ?>
-                            <a href="/livres/detail-livre?id=<?=$book->getId() ?>" class="">
+                            <a href="/livres/detail-livre?id=<?=$book->getId() ?>" class="" aria-label="Voir le livre <?= htmlspecialchars($book->getTitle()) ?> de <?= htmlspecialchars($book->getAuthor()) ?>">
                             <div class="bg-white rounded-b-lg w-40 md:w-52 flex flex-col h-full">
-                                <div class="bg-no-repeat bg-cover w-full aspect-square" style="background-image: url('<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>');">
+                                <div class="w-full aspect-square overflow-hidden">
+                                    <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full h-full object-cover" alt="<?= htmlspecialchars($book->getTitle()) ?>">
                                 </div>
                                 <h3 class="text-sm font-inter font-semibold my-2 px-2 text-left"><?= htmlspecialchars($book->getTitle()) ?></h3>
                                 <p class="text-xs font-inter text-tomTroc-grey mb-4 px-2 text-left"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                                <p class="text-2xs font-inter text-tomTroc-grey italic mb-2 px-2 text-left">Vendu par : <?= htmlspecialchars($book->getOwner_name()) ?></p>
+                                <p class="text-2xs font-inter text-tomTroc-grey italic mb-2 px-2 text-left mt-auto">Vendu par : <?= htmlspecialchars($book->getOwner_name()) ?></p>
                             </div>
                             </a>
                         <?php endforeach; ?>
@@ -85,10 +86,10 @@
             <!--BLOCK BANDEAU IMAGE-->
             <section>
                 <div class="flex items-center md:block">
-                    <img src="<?= ASSETS_PATH?>img/bandeau.png" aria-label="" alt="" class="mx-auto">
+                    <img src="<?= ASSETS_PATH?>img/bandeau.jpg" alt="" class="mx-auto" loading="lazy">
                 </div>
                 <div class="flex items-center md:hidden">
-                    <img src="<?= ASSETS_PATH?>img/bandeau-mob.png" aria-label="" alt="" class="mx-auto">
+                    <img src="<?= ASSETS_PATH?>img/bandeau-mob.jpg" alt="" class="mx-auto" loading="lazy">
                 </div>
             </section>
             <!--BLOCK NOS VALEURS-->
@@ -113,7 +114,7 @@
                     </p>
                     </div>
                     <div class="md:mr-0">
-                        <img src="<?= ASSETS_PATH?>img/coeur.svg" aria-label="" alt="Coeur" class="mx-auto md:mr-auto">
+                        <img src="<?= ASSETS_PATH?>img/coeur.svg" alt="Coeur" class="mx-auto md:mr-auto">
                     </div>
                 </div>
             </section>

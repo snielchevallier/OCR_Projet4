@@ -10,18 +10,18 @@
                 <div class="mx-auto pt-4 pb-0 px-5 max-w-6xl">
                     <?php if (Utils::request("errorMessage")): ?>
                         <p class="text-sm font-inter text-tomTroc-red text-center my-6 md:my-12">
-                            <?=Utils::request("errorMessage")?>
+                            <?=htmlspecialchars(Utils::request("errorMessage"), ENT_QUOTES, 'UTF-8')?>
                         </p>
                         <?php endif; ?>
                         <?php if (Utils::request("message")): ?>
                         <p class="text-sm font-inter text-tomTroc-green text-center my-6 md:my-12">
-                            <?=Utils::request("message")?>
+                            <?=htmlspecialchars(Utils::request("message"), ENT_QUOTES, 'UTF-8')?>
                         </p>
                     <?php endif; ?>
                     <div class="grid grid-cols-1 md:grid-cols-2 pb-10">
                          <div class="bg-white pt-6 px-5 flex flex-col items-center rounded-t-lg md:rounded-t-none md:rounded-l-lg md:ps-12 md:pe-18">
                             <p class="self-start block text-sm font-inter mb-2 text-tomTroc-grey">Photo</p>
-                            <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full" alt="<?= $book->getTitle() ?>" loading="lazy">
+                            <img src="<?= htmlspecialchars(UPLOADS_URL.'books/'.$book->getCover(), ENT_QUOTES, 'UTF-8') ?>" class="w-full" alt="<?= htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8') ?>" loading="lazy">
                             <label for="cover" class="self-end underline pt-2 pb-5 text-tomTroc-darkgrey text-sm font-inter cursor-pointer hover:underline">
                                 modifier la photo
                             </label>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="bg-white rounded-b-lg md:rounded-b-none md:rounded-r-lg py-6 px-7">
                             <form method="POST" action="/update-book" class="space-y-6" enctype="multipart/form-data">
-                                <input id="idBook" name="idBook" value="<?= $book->getId() ?>" type="hidden">
+                                <input id="idBook" name="idBook" value="<?= htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8') ?>" type="hidden">
                                 <input id="cover" name="cover" type="file" class="hidden">
                                 <div>
                                     <label for="titre" class="block text-sm font-inter mb-2 text-tomTroc-grey">
@@ -40,7 +40,7 @@
                                         type="text"
                                         name="titre"
                                         id="titre"
-                                        value="<?=htmlspecialchars($book->getTitle())?>"
+                                        value="<?=htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8')?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -53,7 +53,7 @@
                                         type="text"
                                         name="author"
                                         id="author"
-                                        value="<?=htmlspecialchars($book->getAuthor())?>"
+                                        value="<?=htmlspecialchars($book->getAuthor(), ENT_QUOTES, 'UTF-8')?>"
                                         class="w-full px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"
                                     >
                                 </div>
@@ -61,7 +61,7 @@
                                     <label for="description" class="block text-sm font-inter mb-2 text-tomTroc-grey">
                                         Commentaire
                                     </label>
-                                    <textarea name="description" id="description" class="resize-none w-full h-80 px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"><?=htmlspecialchars($book->getDescription())?></textarea>
+                                    <textarea name="description" id="description" class="resize-none w-full h-80 px-4 py-3 text-sm border border-tomTroc-lightgrey rounded-lg bg-tomTroc-blue focus:outline-none focus:ring-2 focus:ring-tomTroc-green"><?=htmlspecialchars($book->getDescription(), ENT_QUOTES, 'UTF-8')?></textarea>
                                 </div>
                                 <div>
                                     <label for="status" class="block text-sm font-inter mb-2 text-tomTroc-grey">

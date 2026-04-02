@@ -8,7 +8,7 @@
                             </h1>
                             <?php if (Utils::request("errorMessage")): ?>
                             <p class="text-sm font-inter text-tomTroc-red text-center mb-6 md:mb-12">
-                                <?=Utils::request("errorMessage")?>
+                                <?=htmlspecialchars(Utils::request("errorMessage"), ENT_QUOTES, 'UTF-8')?>
                             </p>
                             <?php endif; ?>
                             <form method="POST" action="/addUser" class="space-y-6">

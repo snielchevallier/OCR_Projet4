@@ -29,14 +29,14 @@
                     </h2>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 justify-items-center">
                          <?php foreach ($books as $book): ?>
-                            <a href="/livres/detail-livre?id=<?=$book->getId() ?>" class="" aria-label="Voir le livre <?= htmlspecialchars($book->getTitle()) ?> de <?= htmlspecialchars($book->getAuthor()) ?>">
+                            <a href="/livres/detail-livre?id=<?=htmlspecialchars($book->getId(), ENT_QUOTES, 'UTF-8') ?>" class="" aria-label="Voir le livre <?= htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8') ?> de <?= htmlspecialchars($book->getAuthor(), ENT_QUOTES, 'UTF-8') ?>">
                             <div class="bg-white rounded-b-lg w-40 md:w-52 flex flex-col h-full">
                                 <div class="w-full aspect-square overflow-hidden">
-                                    <img src="<?= UPLOADS_URL ?>books/<?= $book->getCover() ?>" class="w-full h-full object-cover" alt="<?= htmlspecialchars($book->getTitle()) ?>">
+                                    <img src="<?= htmlspecialchars(UPLOADS_URL.'books/'.$book->getCover(), ENT_QUOTES, 'UTF-8') ?>" class="w-full h-full object-cover" alt="<?= htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8') ?>">
                                 </div>
-                                <h3 class="text-sm font-inter font-semibold my-2 px-2 text-left"><?= htmlspecialchars($book->getTitle()) ?></h3>
-                                <p class="text-xs font-inter text-tomTroc-grey mb-4 px-2 text-left"><?= htmlspecialchars($book->getAuthor()) ?></p>
-                                <p class="text-2xs font-inter text-tomTroc-grey italic mb-2 px-2 text-left mt-auto">Vendu par : <?= htmlspecialchars($book->getOwner_name()) ?></p>
+                                <h3 class="text-sm font-inter font-semibold my-2 px-2 text-left"><?= htmlspecialchars($book->getTitle(), ENT_QUOTES, 'UTF-8') ?></h3>
+                                <p class="text-xs font-inter text-tomTroc-grey mb-4 px-2 text-left"><?= htmlspecialchars($book->getAuthor(), ENT_QUOTES, 'UTF-8') ?></p>
+                                <p class="text-2xs font-inter text-tomTroc-grey italic mb-2 px-2 text-left mt-auto">Vendu par : <?= htmlspecialchars($book->getOwner_name(), ENT_QUOTES, 'UTF-8') ?></p>
                             </div>
                             </a>
                         <?php endforeach; ?>

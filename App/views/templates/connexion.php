@@ -51,7 +51,7 @@
                             </p>
                         </div>
                         <div class="">
-                            <img src="<?= ASSETS_PATH?>img/img-users.jpg" class="w-full" alt="une bibliothèque remplie de livres">
+                            <img src="<?= htmlspecialchars(ASSETS_PATH.'img/img-users.jpg', ENT_QUOTES, 'UTF-8')?>" class="w-full" alt="une bibliothèque remplie de livres">
                         </div>
                     </div>
                 </div>

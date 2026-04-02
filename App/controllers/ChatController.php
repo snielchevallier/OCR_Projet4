@@ -31,7 +31,7 @@ class ChatController{
                 if($dest_user){
                     $curr_chat=$this->chatManager->getChatByParticipants(intval($curr_user), intval($dest_user->getId()));
                     if(!empty($curr_chat)){
-                        $messages=$this->messageManager->getMessagesbyChat(intval($curr_chat->getId()));
+                        $messages=$this->messageManager->getMessagesByChat(intval($curr_chat->getId()));
                         //met à jour le champs last_read_at du user du chat
                         $this->chatUserManager->markAsRead(intval($curr_chat->getId()),$curr_user);
                     }else{

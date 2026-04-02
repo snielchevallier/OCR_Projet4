@@ -60,7 +60,6 @@
                                         Mot de passe
                                     </label>
                                     <input 
-                                        required
                                         type="password"
                                         name="password"
                                         id="password"

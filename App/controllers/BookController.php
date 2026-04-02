@@ -3,14 +3,20 @@
 declare(strict_types=1);
 
 class BookController{
+    private BookManager $bookManager;
+    private UserManager $userManager;
+
+    public function __construct(){
+        $this->bookManager = new BookManager();
+        $this->userManager = new UserManager(); 
+    }
 
     public function listBooks(): void{
         $search=Utils::request('search');
-        $bookManager = new BookManager();
-        if(isset($search)){
-            $books = $bookManager->searchBooks($search);
+       if(isset($search)){
+            $books = $this->bookManager->searchBooks($search);
         }else{
-            $books = $bookManager->getAllBooks();
+            $books = $this->bookManager->getAllBooks();
         }
         
         $view = new View("Liste des livres","livres");
@@ -18,12 +24,10 @@ class BookController{
     }
 
     public function detailBook():void{
-        $bookManager = new BookManager();
         $idBook=Utils::request('id', -1);
-        $book = $bookManager->getBookById(intval($idBook));
+        $book = $this->bookManager->getBookById(intval($idBook));
         if(isset($book)){
-        $userManager = new UserManager();
-        $owner = $userManager->getUserById($book->getOwner_id());
+        $owner = $this->userManager->getUserById($book->getOwner_id());
 
         $view = new View("détail du livre: ".htmlspecialchars($book->getTitle()),"livres");
         $view->render("book-detail", ['book' => $book, 'owner' => $owner]);
@@ -34,9 +38,8 @@ class BookController{
 
     public function editBook():void{
         if(Utils::isConnected()){
-            $bookManager = new BookManager();
             $idBook=Utils::request('id', -1);
-            $book = $bookManager->getBookById(intval($idBook));
+            $book = $this->bookManager->getBookById(intval($idBook));
         
             $view = new View("Modification du livre: ".htmlspecialchars($book->getTitle()),"account");
             $view->render("book-edit", ['book' => $book]);
@@ -49,7 +52,6 @@ class BookController{
     //traitement updatebook
     public function updateBook(): void {
         if(Utils::isConnected()){
-            $bookManager = new BookManager();
             //récupére les données
             $idBook = Utils::request("idBook");
             $titre = Utils::request("titre");
@@ -60,7 +62,7 @@ class BookController{
 
             try{
                 //récupère un Book à partir de l'id passé en paramètre
-                $book=$bookManager->getBookById(intval($idBook));
+                $book=$this->bookManager->getBookById(intval($idBook));
                 if (!$book){
                     throw new Exception("Le livre est introuvable");
                 }
@@ -99,7 +101,7 @@ class BookController{
                     $book->setCover($newCover);
                     move_uploaded_file($_FILES['cover']['tmp_name'], UPLOADS_PATH .'books/'. $newCover);
                 }
-                $bookManager->updateBook($book);
+                $this->bookManager->updateBook($book);
             } catch (Exception $e) {
                 
                 Utils::redirect("/account/editer-livre",['id'=>$idBook, 'errorMessage' => $e->getMessage()]);
@@ -112,10 +114,9 @@ class BookController{
     }
 
     public function deleteBook(): void {
-        $bookManager = new BookManager();
-        $idBook=Utils::request('id', -1);
+       $idBook=Utils::request('id', -1);
         try{
-            $book = $bookManager->deleteBookById(intval($idBook));
+            $book = $this->bookManager->deleteBookById(intval($idBook));
         } catch (Exception $e) {
             Utils::redirect("account",['bookErrorMessage' => $e->getMessage()]);
         }

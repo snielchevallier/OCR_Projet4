@@ -48,10 +48,20 @@ Class BookManager extends AbstractEntityManager
         return null;
     }
 
-    public function getBooksByOwner(int $id_owner): array{
+    public function getBookByIdAndOwner(int $id, int $owner_id): ?Book{
+        $sql ="SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE books.id=:id AND books.owner_id=:owner_id";
+        $result = $this->db->query($sql, ['id' => $id, 'owner_id' => $owner_id]);
+        $book = $result->fetch();
+        if ($book) {
+            return new Book($book);
+        }
+        return null;
+    }
+
+    public function getBooksByOwner(int $owner_id): array{
         $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE books.owner_id=:owner_id ORDER BY updated_at DESC";
         
-        $result = $this->db->query($sql, ['owner_id' => $id_owner]);
+        $result = $this->db->query($sql, ['owner_id' => $owner_id]);
         $books = [];
         while ($book = $result->fetch()) {
             $books[] = new Book($book);
@@ -75,6 +85,11 @@ Class BookManager extends AbstractEntityManager
     public function deleteBookById(int $id): void{
         $sql = "DELETE FROM books WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
+    }
+
+    public function deleteBookByIdAndOwner(int $id, int $owner_id): void{
+        $sql = "DELETE FROM books WHERE id = :id AND owner_id = :owner_id";
+        $this->db->query($sql, ['id' => $id, 'owner_id' => $owner_id]);
     }
 
 }

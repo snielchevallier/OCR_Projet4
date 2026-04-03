@@ -39,8 +39,15 @@ class BookController{
     public function editBook():void{
         if(Utils::isConnected()){
             $idBook=Utils::request('id', -1);
-            $book = $this->bookManager->getBookById(intval($idBook));
-        
+            $id_user=$_SESSION['idUser'];
+            $book = $this->bookManager->getBookByIdAndOwner(intval($idBook), intval($id_user));
+            try{
+                if (!$book){
+                    throw new Exception("Le livre est introuvable");
+                }
+            } catch (Exception $e) {
+                Utils::redirect("/account",['errorMessage' => $e->getMessage()]);
+            }
             $view = new View("Modification du livre: ".htmlspecialchars($book->getTitle()),"account");
             $view->render("book-edit", ['book' => $book]);
         }else{
@@ -59,10 +66,10 @@ class BookController{
             $description = Utils::request("description");
             $status = Utils::request("status");
             $cover = Utils::requestFile("cover");
-
+            $id_user=$_SESSION['idUser'];
             try{
                 //récupère un Book à partir de l'id passé en paramètre
-                $book=$this->bookManager->getBookById(intval($idBook));
+                $book=$this->bookManager->getBookByIdAndOwner(intval($idBook), intval($id_user));
                 if (!$book){
                     throw new Exception("Le livre est introuvable");
                 }
@@ -116,7 +123,8 @@ class BookController{
     public function deleteBook(): void {
        $idBook=Utils::request('id', -1);
         try{
-            $book = $this->bookManager->deleteBookById(intval($idBook));
+            $id_user=$_SESSION['idUser'];
+            $book = $this->bookManager->deleteBookByIdAndOwner(intval($idBook), intval($id_user));
         } catch (Exception $e) {
             Utils::redirect("account",['bookErrorMessage' => $e->getMessage()]);
         }

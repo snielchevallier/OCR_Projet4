@@ -4,10 +4,10 @@
 session_start();
 //** DATABASE CONFIGURATION
 // */
-define('DB_HOST', 'my DB_HOST');
-define('DB_NAME', 'my DB_NAME');
-define('DB_USER', 'my DB_USER');
-define('DB_PASS', 'my DB_PASS');
+define('DB_HOST', 'my_DB_HOST');
+define('DB_NAME', 'my_DB_NAME');
+define('DB_USER', 'my_DB_USER');
+define('DB_PASS', 'my_DB_PASS');
 
 
 //** PATHS CONFIGURATION

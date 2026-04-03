@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 27 mars 2026 à 18:26
+-- Généré le : ven. 03 avr. 2026 à 08:56
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -53,7 +53,7 @@ INSERT INTO `books` (`id`, `title`, `author`, `description`, `cover`, `status`, 
 (4, 'Les Hauts de Hurle-Vent', 'Emily Brontë', 'Les Hauts de Hurle-Vent - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident.', '4.jpg', 'available', 4, '2026-03-02 18:57:29', '2026-03-03 10:05:41'),
 (5, 'Orgueil et Préjugés', 'Jane Austen', 'Orgueil et Préjugés - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error.', '5.jpg', 'unavailable', 5, '2026-03-02 18:57:29', '2026-03-17 18:28:45'),
 (6, 'Gatsby le Magnifique', 'Francis Scott Fitzgerald', 'Gatsby le Magnifique - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim ipsam voluptatem.', '6.jpg', 'available', 1, '2026-03-02 18:57:29', '2026-03-03 10:06:32'),
-(7, 'L\'attrape-coeurs2', 'J. D. Salinger2', 'L\'attrape-coeurs - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est sdfsqui dolorem.2', '69bac22e00a36.jpg', 'unavailable', 2, '2026-03-02 18:57:29', '2026-03-19 18:32:08'),
+(7, 'L\'attrape-coeurs', 'J. D. Salinger', 'L\'attrape-coeurs - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Neque porro quisquam est sdfsqui dolorem.', '69bac22e00a36.jpg', 'unavailable', 2, '2026-03-02 18:57:29', '2026-04-02 11:28:07'),
 (8, 'Les Misérables', 'Victor Hugo', 'Les Misérables - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis autem vel eum iure reprehenderit.', '8.jpg', 'available', 3, '2026-03-02 18:57:29', '2026-03-03 10:06:05'),
 (9, 'Ulysse', 'James Joyce', 'Ulysse - Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio.', '9.jpg', 'unavailable', 4, '2026-03-02 18:57:29', '2026-03-17 18:29:00'),
 (10, 'L\'étranger', 'Albert Camus', 'L\'étranger - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et harum quidem rerum facilis est.', '10.jpg', 'available', 5, '2026-03-02 18:57:29', '2026-03-03 11:01:08'),
@@ -111,10 +111,10 @@ CREATE TABLE IF NOT EXISTS `chat_users` (
 --
 
 INSERT INTO `chat_users` (`id`, `chat_id`, `user_id`, `last_read_at`) VALUES
-(1, 6, 2, '2026-03-27 17:47:56'),
+(1, 6, 2, '2026-04-02 17:37:04'),
 (2, 6, 3, '2026-03-27 16:44:34'),
 (3, 7, 4, '2026-03-27 19:25:28'),
-(4, 7, 2, '2026-03-27 19:25:42');
+(4, 7, 2, '2026-04-02 17:36:59');
 
 -- --------------------------------------------------------
 
@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `chat_id` (`chat_id`),
   KEY `author_id` (`author_id`),
   KEY `chat_id_2` (`chat_id`,`created_at`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `messages`
@@ -153,7 +153,10 @@ INSERT INTO `messages` (`id`, `chat_id`, `author_id`, `content`, `created_at`, `
 (10, 7, 4, 'oui et toi?', '2026-03-27 16:43:48', NULL),
 (11, 6, 3, 'yes', '2026-03-27 16:44:34', NULL),
 (12, 7, 2, 'ça va, merci', '2026-03-27 18:04:47', NULL),
-(13, 7, 4, 'et sinon?', '2026-03-27 19:25:28', NULL);
+(13, 7, 4, 'et sinon?', '2026-03-27 19:25:28', NULL),
+(14, 7, 2, 'rien', '2026-03-30 12:11:01', NULL),
+(15, 6, 2, 'bon', '2026-04-02 17:36:45', NULL),
+(16, 6, 2, '', '2026-04-02 17:36:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -181,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `photo`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@tomtroc.com', '$2y$10$0THelWUCqSuKPdLF67YrBeLZhJDtYOyBuSxvPub31CiSmpaP8k9XW', '', '2026-03-02 18:14:10', NULL),
-(2, 'user1', 'user1@tomtroc.com', '$2y$10$4iu5H67jIMjhAGIwuxhM2uELrL3Lt1r7FpBKnWN8UaAkzFyu7c/.C', '', '2026-03-02 18:14:10', NULL),
+(2, 'user1', 'user1@tomtroc.com', '$2y$10$4iu5H67jIMjhAGIwuxhM2uELrL3Lt1r7FpBKnWN8UaAkzFyu7c/.C', '', '2026-03-02 18:14:10', '2026-04-02 17:36:35'),
 (3, 'user2', 'user2@tomtroc.com', '$2y$10$J.Yi0W7YL1m6YLOYTI/RUOAuQtk88JUNVuNQZiDn.zXgIRIfX/2bi', '', '2025-01-02 18:14:10', '2026-03-10 18:29:26'),
 (4, 'user3', 'user3@tomtroc.com', '$2y$10$xsVdbr41UZDBlEhPHfJfO.muXlBU2dTbOO7ccNB6aIyUAKTbWU5aW', '69c50b3613ed7.jpg', '2026-03-02 18:14:10', '2026-03-26 11:32:22'),
 (5, 'user4', 'user4@tomtroc.com', '$2y$10$hCj/QJuamDAKVPQ9KDPALOkjqqjlBBDS3g4MwG2uaDhHf/iTU9NwG', '', '2026-03-02 18:14:10', NULL),

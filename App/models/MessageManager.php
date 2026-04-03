@@ -17,7 +17,7 @@ Class MessageManager extends AbstractEntityManager {
         return $message;
     }
 
-    public function getMessagesbyChat(int $idChat): array{
+    public function getMessagesByChat(int $idChat): array{
         $sql = "SELECT * FROM messages WHERE chat_id=:chat_id ORDER BY created_at ASC";
         
         $result = $this->db->query($sql, ['chat_id' => $idChat]);

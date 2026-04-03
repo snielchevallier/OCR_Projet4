@@ -3,5 +3,3 @@ config/config.php
 node_modules/
 
 seedsDB.php
-
-public/uploads

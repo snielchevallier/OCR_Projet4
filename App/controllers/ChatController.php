@@ -31,21 +31,21 @@ class ChatController{
                 if($dest_user){
                     $curr_chat=$this->chatManager->getChatByParticipants(intval($curr_user), intval($dest_user->getId()));
                     if(!empty($curr_chat)){
-                        $messages=$this->messageManager->getMessagesbyChat(intval($curr_chat->getId()));
+                        $messages=$this->messageManager->getMessagesByChat(intval($curr_chat->getId()));
                         //met à jour le champs last_read_at du user du chat
                         $this->chatUserManager->markAsRead(intval($curr_chat->getId()),$curr_user);
                     }else{
                         $messages=[];
                     }
-                    $view = new View("Messagerie");
+                    $view = new View("Messagerie","chat");
                     $view->render("chat",['user_dest' => $dest_user,'messages'=>$messages,'chats'=>$chats]);
                 }else{
-                    $view = new View("Messagerie");
+                    $view = new View("Messagerie","chat");
                     $view->render("messaging",['chats'=>$chats]);
                 }
             }else{
                 //si pas de destinataire, affiche la liste des chat sans la partie message
-                $view = new View("Messagerie");
+                $view = new View("Messagerie","chat");
                 $view->render("messaging",['chats'=>$chats]);
             }
             

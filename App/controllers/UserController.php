@@ -3,16 +3,23 @@
 declare(strict_types=1);
 
 class UserController{
+    private UserManager $userManager;
+    private BookManager $bookManager;
+
+    public function __construct(){
+        $this->userManager = new UserManager(); 
+        $this->bookManager = new BookManager();
+    }
 
     public function registerUser(): void{
         
-        $view = new View("Inscription");
+        $view = new View("Inscription","connexion");
         $view->render("register");
     }
 
     public function connexionUser(): void{
         
-        $view = new View("Connexion");
+        $view = new View("Connexion","connexion");
         $view->render("connexion");
     }
     
@@ -24,8 +31,8 @@ class UserController{
             if (empty($login) || empty($password)) {
                 throw new Exception("erreur");
             }
-            $userManager = new UserManager();
-            $user = $userManager->getUserByEmail($login);
+            
+            $user = $this->userManager->getUserByEmail($login);
             
             if (!$user) {
                 throw new Exception("erreur");
@@ -53,7 +60,6 @@ class UserController{
 
     //traitement registerUser
     public function addUser(): void{
-        $userManager = new UserManager();
         //récupére les données
         $pseudo = Utils::request("pseudo");
         $email = Utils::request("email");
@@ -69,12 +75,12 @@ class UserController{
             }
                     
             //vérifie que le mail du user n'existe pas
-            if ($userManager->getUserByEmail($email)) {
+            if ($this->userManager->getUserByEmail($email)) {
                 throw new Exception("Cet email est déjà utilisé.");
             }
 
             //vérifie que le pseudo du user n'existe pas
-            if ($userManager->getUserByPseudo($pseudo)) {
+            if ($this->userManager->getUserByPseudo($pseudo)) {
                 throw new Exception("Ce pseudo est déjà utilisé.");
             }
             
@@ -84,7 +90,7 @@ class UserController{
                 'email' => $email,
                 'password' => password_hash($password, PASSWORD_DEFAULT)
             ]);
-            $usercreated = $userManager->addUser($user);
+            $usercreated = $this->userManager->addUser($user);
 
             //connecte le User
             $_SESSION['user'] = $usercreated;
@@ -102,13 +108,11 @@ class UserController{
     
     //page profileUser
     public function profileUser(): void{
-        $userManager = new UserManager();
         $idUser=Utils::request('id', -1);
-        $user = $userManager->getUserById(intval($idUser));
+        $user = $this->userManager->getUserById(intval($idUser));
         if(isset($user)){
-            $bookManager = new BookManager();
-            $books=$bookManager->getBooksByOwner(intval($idUser));
-            $view = new View("profile");
+            $books=$this->bookManager->getBooksByOwner(intval($idUser));
+            $view = new View("profile","livres");
             $view->render("user-profile", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");
@@ -117,14 +121,12 @@ class UserController{
     
     //page account User
     public function accountUser(): void{
-        $userManager = new UserManager();
         $idUser=$_SESSION['idUser'];
-        $user = $userManager->getUserById(intval($idUser));
+        $user = $this->userManager->getUserById(intval($idUser));
         
-        $bookManager = new BookManager();
-        $books=$bookManager->getBooksByOwner(intval($idUser));
+        $books=$this->bookManager->getBooksByOwner(intval($idUser));
         if(isset($user)){
-            $view = new View("account");
+            $view = new View("account","account");
             $view->render("user-account", ['user' => $user,'books' => $books]);
         }else{
             Utils::redirect("/");
@@ -133,7 +135,7 @@ class UserController{
 
     //traitement updateuser
     public function updateUser(): void {
-        $userManager = new UserManager();
+        
         //récupére les données
         $pseudo = Utils::request("pseudo");
         $email = Utils::request("email");
@@ -142,7 +144,7 @@ class UserController{
 
         try{
             //récupère un User à partir de l'id user de la session
-            $user=$userManager->getUserById($_SESSION['idUser']);
+            $user=$this->userManager->getUserById($_SESSION['idUser']);
             if (!$user){
                 throw new Exception("L'utilisateur est introuvable");
             }
@@ -172,7 +174,7 @@ class UserController{
 
             //si l'email reçu est différent de l'existant, vérifie que le nouvel email du user n'existe pas
             if($email != $user->getEmail()){
-                if ($userManager->getUserByEmail($email)) {
+                if ($this->userManager->getUserByEmail($email)) {
                     throw new Exception("Cet email est déjà utilisé.");
                 }else{
                     $user->setEmail($email);
@@ -181,7 +183,7 @@ class UserController{
 
             //si le pseudo reçu est différent de l'existant, vérifie que le nouvel pseudo du user n'existe pas
             if($pseudo != $user->getPseudo()){
-                if ($userManager->getUserByPseudo($pseudo)) {
+                if ($this->userManager->getUserByPseudo($pseudo)) {
                     throw new Exception("Ce pseudo est déjà utilisé.");
                 }else{
                     $user->setPseudo($pseudo);
@@ -202,7 +204,7 @@ class UserController{
                 move_uploaded_file($_FILES['photo']['tmp_name'], UPLOADS_PATH .'users/'. $newPhoto);
 
             }
-            $userManager->updateUser($user);
+            $this->userManager->updateUser($user);
         } catch (Exception $e) {
             
             Utils::redirect("account",['errorMessage' => $e->getMessage()]);

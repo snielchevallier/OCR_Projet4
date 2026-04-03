@@ -13,6 +13,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Plateforme d'échange de livres entre lecteurs : partagez, découvrez et échangez facilement vos livres au sein d'une communauté passionnée.">
         <title>TomTroc - <?=$title?></title>
         <!--fonts-->
         <link rel="preconnect" href="https://fonts.googleapis.com">

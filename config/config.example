@@ -1,0 +1,22 @@
+<?php
+//** CONFIGURATION FILE
+// */
+session_start();
+//** DATABASE CONFIGURATION
+// */
+define('DB_HOST', 'my_DB_HOST');
+define('DB_NAME', 'my_DB_NAME');
+define('DB_USER', 'my_DB_USER');
+define('DB_PASS', 'my_DB_PASS');
+
+
+//** PATHS CONFIGURATION
+//  */
+define('BASE_URL', 'http://********/');
+define('BASE_PATH', __DIR__ . '/../'); 
+define('TEMPLATE_VIEW_PATH', BASE_PATH . 'App/views/templates/'); 
+define('TEMPLATE_PARTS_PATH', BASE_PATH . 'App/views/parts/'); 
+define('MAIN_VIEW_PATH', TEMPLATE_VIEW_PATH . 'main.php'); 
+define('ASSETS_PATH', BASE_URL . 'assets/'); 
+define('UPLOADS_URL', BASE_URL . 'uploads/'); 
+define('UPLOADS_PATH', BASE_PATH.'public/uploads/'); 

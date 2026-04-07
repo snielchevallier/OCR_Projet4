@@ -6,7 +6,7 @@ Class BookManager extends AbstractEntityManager
 {
     
     public function getAllBooks(): array{
-        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id ORDER BY updated_at DESC";
+        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE books.status = 'available' ORDER BY updated_at DESC";
         $result = $this->db->query($sql);
         $books = [];
 
@@ -17,7 +17,7 @@ Class BookManager extends AbstractEntityManager
     }
 
     public function searchBooks(string $search): array{
-        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE title LIKE :search ORDER BY updated_at DESC";
+        $sql = "SELECT books.*, users.pseudo AS owner_name FROM books JOIN users ON books.owner_id = users.id WHERE title LIKE :search AND books.status = 'available' ORDER BY updated_at DESC";
         $result = $this->db->query($sql,['search' => '%' . $search . '%']);
         $books = [];
 

@@ -35,6 +35,14 @@ cd OCR_Projet4
 git checkout develop
 
 
+### Comptes Tests
+user1@tomtroc.com
+
+user1TT
+
+user2@tomtroc.com
+
+user2TT
 
 ### FRONTEND
 les sources du front sont dans le dossier _front.

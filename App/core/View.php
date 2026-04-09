@@ -3,35 +3,38 @@
 /**
  * Cette classe génère les vues en fonction de ce que chaque contrôlleur lui passe en paramètre. 
  */
-class View 
+class View
 {
     private string $title;
     private string $rubrique;
-    
-    
 
-    public function __construct($title, $rubrique) 
+
+    /** Constructeur de la classe View.
+     * @param string $title : le titre de la page.
+     * @param string $rubrique : la rubrique de la page (ex: "livres", "account", etc.).
+     */
+    public function __construct(string $title, string $rubrique)
     {
         $this->title = $title;
         $this->rubrique = $rubrique;
     }
-    
+
     /**
      * Cette méthode retourne une page complète. 
      * @param string $viewPath : le chemin de la vue demandée par le controlleur. 
      * @param array $params : les paramètres que le controlleur a envoyé à la vue.
      * @return string
      */
-    public function render(string $viewName, array $params = []) : void 
+    public function render(string $viewName, array $params = []): void
     {
         // On s'occupe de la vue envoyée
         $viewPath = $this->buildViewPath($viewName);
-        
+
         // Les variables ci-dessous sont utilisées dans le "main.php" qui est le template principal.
         $content = $this->_renderViewFromTemplate($viewPath, $params);
         $title = $this->title;
         $rubrique = $this->rubrique;
-        if(Utils::isConnected()){
+        if (Utils::isConnected()) {
             $messageManager = new MessageManager();
             $nbUnreadMessages = $messageManager->countUnreadMessage(intval($_SESSION['idUser']));
         }
@@ -39,7 +42,7 @@ class View
         require(MAIN_VIEW_PATH);
         echo ob_get_clean();
     }
-    
+
     /**
      * Coeur de la classe, c'est ici qu'est généré ce que le controlleur a demandé. 
      * @param $viewPath : le chemin de la vue demandée par le controlleur.
@@ -47,8 +50,8 @@ class View
      * @throws Exception : si la vue n'existe pas.
      * @return string : le contenu de la vue.
      */
-    private function _renderViewFromTemplate(string $viewPath, array $params = []) : string
-    {  
+    private function _renderViewFromTemplate(string $viewPath, array $params = []): string
+    {
         if (file_exists($viewPath)) {
             extract($params); // On transforme les diverses variables stockées dans le tableau "params" en véritables variables qui pourront être lues dans le template.
             ob_start();
@@ -64,11 +67,8 @@ class View
      * @param string $viewName : le nom de la vue demandée.
      * @return string : le chemin vers la vue demandée.
      */
-    private function buildViewPath(string $viewName) : string
+    private function buildViewPath(string $viewName): string
     {
         return TEMPLATE_VIEW_PATH . $viewName . '.php';
     }
 }
-
-
-

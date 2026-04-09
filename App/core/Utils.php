@@ -1,17 +1,34 @@
 <?php
 
-class Utils {
-    public static function request(string $variableName, mixed $defaultValue = null) : mixed
+class Utils
+{
+    /**
+     * Récupère une variable de la requête HTTP (GET, POST, etc.) ou retourne une valeur par défaut si elle n'est pas définie.
+     * @param string $variableName : le nom de la variable à récupérer
+     * @param mixed $defaultValue : la valeur par défaut à retourner si la variable n'est pas définie
+     * @return mixed : la valeur de la variable ou la valeur par défaut
+     */
+    public static function request(string $variableName, mixed $defaultValue = null): mixed
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
-    public static function requestFile(string $variableName, mixed $defaultValue = null) : mixed
+    /**
+     * Récupère une variable des uploads de la requête POST, etc ou retourne une valeur par défaut si elle n'est pas définie.
+     * @param string $variableName : le nom de la variable à récupérer
+     * @param mixed $defaultValue : la valeur par défaut à retourner si la variable n'est pas définie
+     * @return mixed : la valeur de la variable ou la valeur par défaut
+     */
+    public static function requestFile(string $variableName, mixed $defaultValue = null): mixed
     {
         return $_FILES[$variableName] ?? $defaultValue;
     }
-    
-    public static function isConnected() : bool
+
+    /**
+     * Vérifie si l'utilisateur est connecté.
+     * @return bool : true si l'utilisateur est connecté, false sinon
+     */
+    public static function isConnected(): bool
     {
         return isset($_SESSION['user']);
     }
@@ -22,10 +39,10 @@ class Utils {
      * @param array $params : Facultatif, les paramètres à passer en GET
      * @return void
      */
-    public static function redirect(string $url, array $params = []) : void
+    public static function redirect(string $url, array $params = []): void
     {
-        if(isset($params)){
-            $url .="?";
+        if (isset($params)) {
+            $url .= "?";
         }
         foreach ($params as $paramName => $paramValue) {
             $url .= "$paramName=$paramValue&";
@@ -61,15 +78,13 @@ class Utils {
     }
 
 
-    /**
-     * teste si le paramètre est présent dans l'url
-     * @param string $rubrique : la rubrique à tester
-     * 
-     * @return bool
+    /** Vérifie si la rubrique est active en comparant l'URI actuelle avec la rubrique donnée.
+     * @param string $rubrique : la rubrique à vérifier
+     * @return bool : true si la rubrique est active, false sinon
      */
-    public static function isNavActive(string $rubrique): bool{
+    public static function isNavActive(string $rubrique): bool
+    {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        return str_starts_with($uri, "/".$rubrique);
-    } 
-
+        return str_starts_with($uri, "/" . $rubrique);
+    }
 }

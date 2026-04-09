@@ -1,8 +1,13 @@
 <?php
 
 declare(strict_types=1);
-
-Class Book{
+/**
+ * Modèle qui représente un livre.
+ * Il contient les propriétés d'un livre ainsi que les méthodes pour accéder à ces propriétés.
+ * Le constructeur de cette classe prend un tableau de données en paramètre et initialise les propriétés du livre à partir de ce tableau.
+ */
+class Book
+{
     private ?int $id;
     private string $title;
     private string $author;
@@ -14,7 +19,12 @@ Class Book{
     private DateTime $created_at;
     private ?DateTime $updated_at;
 
-    public function __construct(array $data){
+    /** Constructeur de la classe Book.
+     * Il initialise les propriétés du livre à partir d'un tableau de données.
+     * @param array $data Tableau de données contenant les propriétés du livre.
+     */
+    public function __construct(array $data)
+    {
         $this->id = $data['id'] ?? null;
         $this->title = $data['title'] ?? '';
         $this->author = $data['author'] ?? '';
@@ -27,84 +37,107 @@ Class Book{
         $this->updated_at = !empty($data['updated_at']) ? new DateTime($data['updated_at']) : null;
     }
     
-    public function setId(int $id): void{
+    /** Getters et setters pour les propriétés du livre.
+     * Ces méthodes permettent d'accéder aux propriétés du livre et de les modifier si nécessaire.
+     */
+    public function setId(int $id): void
+    {
         $this->id = $id;
     }
-    
-    public function getId(): ?int{
+
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
-    public function setTitle(string $title): void{
+    public function setTitle(string $title): void
+    {
         $this->title = $title;
     }
 
-    public function getTitle(): string{
+    public function getTitle(): string
+    {
         return $this->title;
     }
 
-    public function setAuthor(string $author): void{
+    public function setAuthor(string $author): void
+    {
         $this->author = $author;
     }
 
-    public function getAuthor(): string{
+    public function getAuthor(): string
+    {
         return $this->author;
     }
 
-    public function setDescription(string $description): void{
+    public function setDescription(string $description): void
+    {
         $this->description = $description;
     }
 
-    public function getDescription(): string{
+    public function getDescription(): string
+    {
         return $this->description;
     }
 
-    
-    public function setCover(?string $cover): void{
+
+    public function setCover(?string $cover): void
+    {
         $this->cover = $cover;
     }
 
-    public function getCover(): ?string{
+    public function getCover(): ?string
+    {
         return $this->cover;
     }
 
-    public function setOwner_id(int $owner_id): void{
+    public function setOwner_id(int $owner_id): void
+    {
         $this->owner_id = $owner_id;
     }
 
-    public function getOwner_id():int{
+    public function getOwner_id(): int
+    {
         return $this->owner_id;
     }
 
-    public function setOwner_name(string $owner_name): void{
+    public function setOwner_name(string $owner_name): void
+    {
         $this->owner_name = $owner_name;
     }
 
-    public function getOwner_name():string{
+    public function getOwner_name(): string
+    {
         return $this->owner_name;
     }
 
-    public function setStatus(string $status): void{
-          $this->status = $status;
-     }
-
-    public function getStatus():string{
-           return $this->status;
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 
-    public function setCreatedAt(DateTime $created_at): void{
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function setCreatedAt(DateTime $created_at): void
+    {
         $this->created_at = $created_at;
     }
 
-    public function getCreatedAt(): DateTime{
+    public function getCreatedAt(): DateTime
+    {
         return $this->created_at;
     }
 
-    public function setUpdatedAt(?DateTime $updated_at): void{
+    public function setUpdatedAt(?DateTime $updated_at): void
+    {
         $this->updated_at = $updated_at;
     }
 
-    public function getUpdatedAt(): ?DateTime{
+    public function getUpdatedAt(): ?DateTime
+    {
         return $this->updated_at;
     }
 }

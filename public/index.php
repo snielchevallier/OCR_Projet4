@@ -4,16 +4,20 @@
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../config/autoload.php';
 
-// ROUTEUR
+/*
+ * Ce fichier est le point d'entrée de l'application. 
+ * Il utilise un système de routage simple pour déterminer quelle action doit être exécutée en fonction de l'URL demandée.
+ * En fonction de l'URL, il instancie le contrôleur approprié et appelle la méthode correspondante pour traiter la requête.
+ * Si l'URL ne correspond à aucune route définie, il affiche une page d'erreur.
+ */
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-//$uri = trim($uri, '/');
 switch ($uri) {
-    case '/':
-        $homeController = new HomeController();
-        $homeController->home();
-        break;
+	case '/':
+		$homeController = new HomeController();
+		$homeController->home();
+		break;
 	case '/livres/nos-livres-a-l-echange':
-		$rubrique="livres";
+		$rubrique = "livres";
 		$bookController = new BookController();
 		$bookController->listBooks();
 		break;
@@ -44,7 +48,7 @@ switch ($uri) {
 	case '/updateUser':
 		$userController = new UserController();
 		$userController->updateUser();
-		break;	
+		break;
 	case '/profil':
 		$userController = new UserController();
 		$userController->profileUser();
@@ -74,7 +78,7 @@ switch ($uri) {
 		$chatController->sendMessage();
 		break;
 	default:
-		$view = new View("Erreur","erreur");
-        $view->render("erreur",);
+		$view = new View("Erreur", "erreur");
+		$view->render("erreur",);
 		break;
 }

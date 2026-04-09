@@ -151,9 +151,16 @@ class BookController
     public function deleteBook(): void
     {
         $idBook = Utils::request('id', -1);
+        $bookToRemove = $this->bookManager->getBookById(intval($idBook));
         try {
             $id_user = $_SESSION['idUser'];
+            $fileToRemove = $bookToRemove->getCover();
+            //supprime l'ancienne couverture
+            if (isset($fileToRemove)) {
+                unlink(UPLOADS_PATH . 'books/' . $bookToRemove->getCover());
+            }
             $book = $this->bookManager->deleteBookByIdAndOwner(intval($idBook), intval($id_user));
+            
         } catch (Exception $e) {
             Utils::redirect("account", ['bookErrorMessage' => $e->getMessage()]);
         }

@@ -160,7 +160,6 @@ class BookController
                 unlink(UPLOADS_PATH . 'books/' . $bookToRemove->getCover());
             }
             $book = $this->bookManager->deleteBookByIdAndOwner(intval($idBook), intval($id_user));
-            
         } catch (Exception $e) {
             Utils::redirect("account", ['bookErrorMessage' => $e->getMessage()]);
         }
